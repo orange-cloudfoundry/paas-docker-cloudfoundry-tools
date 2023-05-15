@@ -39,7 +39,7 @@ jobs:
         
     - 
       name: build docker images
-      run: |
+      run: | # shellcheck disable=SC2086
         for image in $BASE_IMAGES;do
           echo "Processing $image"
           bundle exec rake build:$image
@@ -47,7 +47,7 @@ jobs:
       
     -
       name: test docker images
-      run: |
+      run: | # shellcheck disable=SC2086
         for image in $BASE_IMAGES;do
           echo "Processing $image"
           bundle exec rake spec:$image
@@ -145,7 +145,7 @@ jobs:
         IMAGE: spruce
     -
       name: build docker images with dependencies
-      run: |
+      run: | # shellcheck disable=SC2086
         for image in $IMAGES_WITH_DEPENDENCIES;do
           echo "Processing $image"
           bundle exec rake build:$image
@@ -153,7 +153,7 @@ jobs:
 
     -
       name: test docker images with dependencies
-      run: |
+      run: |# shellcheck disable=SC2086
         for image in $IMAGES_WITH_DEPENDENCIES;do
           echo "Processing $image"
           bundle exec rake spec:$image
@@ -191,10 +191,18 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ build_and_publish ]
     steps:
-      - name: check docker public images
-        run: |
+      - # Currently we cannot use `docker manifest` without authentication, it results in "unauthorized: access token has insufficient scopes"
+        # Also, to save network bandwidth and reduce build time we avoid using `docker pull`
+        name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      -
+        name: check docker public images
+        run: | # shellcheck disable=SC2086
           for image in $BASE_IMAGES $IMAGES_WITH_DEPENDENCIES;do
-            echo "Processing $image"
+            echo "Processing $image: checking manifest for $DOCKERHUB_ORG/$image:$GITHUB_SHA"
             docker manifest inspect $DOCKERHUB_ORG/$image:$GITHUB_SHA
           done
 
