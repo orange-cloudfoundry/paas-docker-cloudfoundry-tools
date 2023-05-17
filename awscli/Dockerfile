@@ -1,6 +1,6 @@
 FROM elpaasoci/curl-ssl
 
-ENV AWSCLI_VERSION "1.18.140"
+ENV AWSCLI_VERSION "1.19.112"
 
 RUN apk add --no-cache \
         groff~1.22.4-r4 \
