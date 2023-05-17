@@ -2,14 +2,14 @@ require 'spec_helper'
 require 'docker'
 require 'serverspec'
 
-BOSH_CLI_VERSION="6.4.17-f0454a75-2022-02-25T00:42:57Z"
+BOSH_CLI_VERSION="7.2.3-b36ee5199-2023-04-28T22:35:13Z"
 YTT_VERSION="0.40.1"
 CREDHUB_VERSION='2.9.1'
 KUSTOMIZE_VERSION="4.5.1"
 KAPP_VERSION="0.46.0"
 KUBECTL_VERSION="1.21.10"
-HELM_VERSION="3.8.1"
-KUTTL_VERSION="0.11.1"
+HELM_VERSION="3.12.0"
+KUTTL_VERSION="0.15.0"
 
 DEPS = "unzip curl openssl ca-certificates git libc6 bash jq gettext"
 

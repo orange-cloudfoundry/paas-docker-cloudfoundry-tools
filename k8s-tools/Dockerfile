@@ -20,8 +20,8 @@ RUN echo "Computed sha256sum: $(sha256sum ${YTT_FILENAME})" \
     && mv ${YTT_FILENAME} ytt
 
 
-ENV CREDHUB_CLI_VERSION 2.9.1
-ENV CREDHUB_CLI_SUM df8aa256d4563d741bda71e4e0baff077addce8438dba4f9157504b387b93d9f
+ENV CREDHUB_CLI_VERSION 2.9.15
+ENV CREDHUB_CLI_SUM d61c738f65004afd35ed8dd5d17f57d0f1700629ad29e5335b906746f8958026
 ENV CREDHUB_CLI_FILENAME credhub-linux-${CREDHUB_CLI_VERSION}.tgz
 ADD https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/${CREDHUB_CLI_VERSION}/${CREDHUB_CLI_FILENAME} .
 RUN echo "Computed sha256sum: $(sha256sum ${CREDHUB_CLI_FILENAME})" \
@@ -44,15 +44,15 @@ RUN echo "Computed sha256sum: $(sha256sum ${KAPP_FILENAME})" \
     && echo "${KAPP_SUM}  ${KAPP_FILENAME}" | sha256sum -c - \
     && mv kapp-linux-amd64 kapp
 
-ENV KUBECTL_VERSION 1.21.10
-ENV KUBECTL_SUM 24ce60269b1ffe1ca151af8bfd3905c2427ebef620bc9286484121adf29131c0
+ENV KUBECTL_VERSION 1.24.13
+ENV KUBECTL_SUM 52455fe485fa11c650ab07fea2e4856b5ea5a3e6ef8a1b3b6121e6361437fff9
 ENV KUBECTL_FILENAME kubectl
 ADD https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl .
 RUN echo "Computed sha256sum: $(sha256sum ${KUBECTL_FILENAME})" \
     && echo "${KUBECTL_SUM}  ${KUBECTL_FILENAME}" | sha256sum -c -
 
-ENV HELM_VERSION 3.8.1
-ENV HELM_SUM d643f48fe28eeb47ff68a1a7a26fc5142f348d02c8bc38d699674016716f61cd
+ENV HELM_VERSION 3.12.0
+ENV HELM_SUM da36e117d6dbc57c8ec5bab2283222fbd108db86c83389eebe045ad1ef3e2c3b
 ENV HELM_FILENAME helm-v${HELM_VERSION}-linux-amd64.tar.gz
 ADD https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz .
 RUN echo "Computed sha256sum: $(sha256sum ${HELM_FILENAME})" \
@@ -61,8 +61,8 @@ RUN echo "Computed sha256sum: $(sha256sum ${HELM_FILENAME})" \
     && mv linux-amd64/helm helm \
     && rm -rf linux-amd64
 
-ENV KUTTL_VERSION 0.11.1
-ENV KUTTL_PLUGIN_SUM 0fb13f8fbb6109803a06847a8ad3fae4fedc8cd159e2b0fd6c1a1d8737191e5f
+ENV KUTTL_VERSION 0.15.0
+ENV KUTTL_PLUGIN_SUM f6edcf22e238fc71b5aa389ade37a9efce596017c90f6994141c45215ba0f862
 ENV KUTTL_PLUGIN_FILENAME kubectl-kuttl_${KUTTL_VERSION}_linux_x86_64
 ADD https://github.com/kudobuilder/kuttl/releases/download/v${KUTTL_VERSION}/${KUTTL_PLUGIN_FILENAME} .
 RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGIN_FILENAME})" \
@@ -70,8 +70,8 @@ RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGI
     && mv ${KUTTL_PLUGIN_FILENAME} kubectl-kuttl \
     && ln -s kubectl-kuttl kuttl
 
-ENV YQ_VERSION 4.22.1
-ENV YQ_SUM 54bbc804b90595c62685e8d4f19330b968cd716f72edc03cbda91adbc808036e
+ENV YQ_VERSION 4.33.3
+ENV YQ_SUM 4ee662847c588c3ef2fec8bfb304e8739e3dbaba87ccb9a608d691c88f5b64dc
 ENV YQ_FILENAME yq_linux_amd64
 ADD https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} .
 RUN echo "Computed ${YQ_FILENAME} sha256sum: $(sha256sum ${YQ_FILENAME})" \
@@ -79,8 +79,8 @@ RUN echo "Computed ${YQ_FILENAME} sha256sum: $(sha256sum ${YQ_FILENAME})" \
     && chmod +x ${YQ_FILENAME} \
     && mv ${YQ_FILENAME} /usr/local/bin/yq
 
-ENV BOSH_CLI_VERSION 6.4.17
-ENV BOSH_CLI_SUM d0917d3ad0ff544a4c69a7986e710fe48e8cb2207717f77db31905d639e28c18
+ENV BOSH_CLI_VERSION 7.2.3
+ENV BOSH_CLI_SUM f090d6962a56d946f9592105f6a97956f77d4b6f527e184105355d3f46f354ad
 ENV BOSH_CLI_FILENAME bosh-cli-${BOSH_CLI_VERSION}-linux-amd64
 ADD https://s3.amazonaws.com/bosh-cli-artifacts/${BOSH_CLI_FILENAME} .
 RUN echo "Computed ${BOSH_CLI_FILENAME} sha256sum: $(sha256sum ${BOSH_CLI_FILENAME})" \
