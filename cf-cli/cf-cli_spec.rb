@@ -4,7 +4,7 @@ require 'serverspec'
 
 CF_CLI_VERSION="8.6.0"
 SPRUCE_BIN = "/usr/local/bin/spruce"
-SPRUCE_VERSION = "1.29.0"
+SPRUCE_VERSION = "1.30.2"
 
 describe "cf-cli image" do
   before(:all) {
@@ -72,7 +72,7 @@ describe "cf-cli image" do
 
   it "has the spruce version #{SPRUCE_VERSION}" do
     spruce_version = command("spruce --version").stdout.strip
-    expect(spruce_version).to match(/spruce - Version #{SPRUCE_VERSION}( \(master\))?/)
+    expect(spruce_version).to match(/spruce - Version v#{SPRUCE_VERSION}( \(master\))?/)
   end
 
   it "has `bash` available" do
