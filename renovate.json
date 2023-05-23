@@ -7,7 +7,7 @@
   ],
 
   "baseBranches": [
-    "develop"
+    "main"
   ],
 
   "ignorePaths": [
