@@ -2,8 +2,8 @@ require 'spec_helper'
 require 'docker'
 require 'serverspec'
 
-BOSH_CLI_VERSION="7.2.3-b36ee5199-2023-04-28T22:35:13Z"
-CREDHUB_VERSION='2.9.1'
+BOSH_CLI_VERSION="7.2.3"
+CREDHUB_CLI_VERSION='2.9.15'
 
 BOSH_ENV_DEPS = "build-essential zlib1g-dev openssl libxslt1-dev libxml2-dev \
     libssl-dev libreadline8 libreadline-dev libyaml-dev libsqlite3-dev sqlite3"
@@ -22,7 +22,7 @@ describe "bosh-cli-v2 image" do
   it "has the expected version of the Bosh CLI (#{BOSH_CLI_VERSION})" do
     expect(
       command("bosh -v").stdout.strip
-    ).to eq("version #{BOSH_CLI_VERSION}")
+    ).to match("version #{BOSH_CLI_VERSION}-")
   end
 
   it "has `file` available" do
@@ -44,7 +44,7 @@ describe "bosh-cli-v2 image" do
   it "can run credhub" do
     cmd = command('credhub --version')
     expect(cmd.exit_status).to eq(0)
-    expect(cmd.stdout.match?(/#{CREDHUB_VERSION}/)).to eq(true)
+    expect(cmd.stdout.match?(/#{CREDHUB_CLI_VERSION}/)).to eq(true)
   end
 
   it "has `bash` available" do

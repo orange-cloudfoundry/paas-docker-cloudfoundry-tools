@@ -2,9 +2,9 @@ require 'spec_helper'
 require 'docker'
 require 'serverspec'
 
-BOSH_CLI_VERSION="7.2.3-b36ee5199-2023-04-28T22:35:13Z"
+BOSH_CLI_VERSION="7.2.3"
 YTT_VERSION="0.40.1"
-CREDHUB_VERSION='2.9.1'
+CREDHUB_CLI_VERSION='2.9.1'
 KUSTOMIZE_VERSION="4.5.1"
 KAPP_VERSION="0.46.0"
 KUBECTL_VERSION="1.21.10"
@@ -30,10 +30,10 @@ describe "k8s image" do
     ).to eq("ytt version #{YTT_VERSION}")
   end
 
-  it "has the expected version of credhub (#{CREDHUB_VERSION})" do
+  it "has the expected version of credhub (#{CREDHUB_CLI_VERSION})" do
     expect(
         command("credhub --version").stdout.strip
-    ).to match("#{CREDHUB_VERSION}")
+    ).to match("#{CREDHUB_CLI_VERSION}")
   end
 
   it "has the expected version of Kustomize (#{KUSTOMIZE_VERSION})" do
@@ -120,6 +120,6 @@ describe "k8s image" do
   it "has the expected version of the Bosh CLI" do
     expect(
       command("bosh -v").stdout.strip
-    ).to eq("version #{BOSH_CLI_VERSION}")
+    ).to match("version #{BOSH_CLI_VERSION}-")
   end
 end

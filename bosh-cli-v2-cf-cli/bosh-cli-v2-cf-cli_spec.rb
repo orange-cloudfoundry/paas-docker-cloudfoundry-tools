@@ -3,7 +3,7 @@ require 'docker'
 require 'serverspec'
 
 BOSH_CLI_VERSION="7.2.3-b36ee5199-2023-04-28T22:35:13Z"
-CREDHUB_VERSION='2.9.1'
+CREDHUB_CLI_VERSION='2.9.1'
 CF_CLI_VERSION="8.3.0"
 SPRUCE_BIN = "/usr/local/bin/spruce"
 SPRUCE_VERSION = "1.30.2"
