@@ -1,3 +1,4 @@
+// Note: we use JSON5 to be able to use comments
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
@@ -5,7 +6,9 @@
     ":disableRateLimiting",
     ":rebaseStalePrs"
   ],
-
+  "github-actions": {
+    enabled: false
+  },
   "baseBranches": [
     "main"
   ],
