@@ -42,15 +42,32 @@
       "assignees": [
         "o-orand"
       ]
+    },
+    {
+      "matchPackagePatterns": [".*"],
+      "addLabels": ["{{datasource}}","{{depName}}"]
+    },
+    {
+      "description": "Ruby: update spec files",
+      "matchDepNames": "ruby",
+      "matchFiles": [".+/*_spec\\.rb"]
     }
   ],
 
   "regexManagers": [
     {
       "description": "https://regex101.com/r/QUjPL3/1",
+      "fileMatch": [".+/*_spec\\.rb"],
+      "matchStrings": [
+        "\\s*RUBY_VERSION\\s*=\\s*\"(?<currentValue>[a-z0-9\\.\\/\\-\\+]*)\".*$"
+      ],
+      "datasourceTemplate": "ruby"
+    },
+    {
+      "description": "https://regex101.com/r/QUjPL3/1",
       "fileMatch": [".+/Dockerfile$",".+/*_spec\\.rb"],
       "matchStrings": [
-        "ENV (?<depName>[A-Z0-9\\.\\/\\-_]*?)_VERSION \"?(?<currentValue>[a-z0-9\\.\\/\\-\\+]*\"?).*$"
+        "ENV (?<depName>[A-Z0-9\\.\\/\\-_]*?)_VERSION \"?(?<currentValue>[a-z0-9\\.\\/\\-\\+]*)\"?.*$"
       ],
       "datasourceTemplate": "github-releases",
       "versioningTemplate": "regex:v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)?$"
