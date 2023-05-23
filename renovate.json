@@ -61,7 +61,8 @@
       "matchStrings": [
         "\\s*RUBY_VERSION\\s*=\\s*\"(?<currentValue>[a-z0-9\\.\\/\\-\\+]*)\".*$"
       ],
-      "depNameTemplate": "ruby"
+      "depNameTemplate": "ruby",
+      "datasourceTemplate": "docker"
     },
     {
       "description": "https://regex101.com/r/QUjPL3/1",
