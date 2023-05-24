@@ -1,7 +1,9 @@
 FROM ruby:3.1-alpine3.18
 
 ENV PACKAGES "unzip curl openssl ca-certificates git libc6-compat bash jq gettext make"
+# renovate: datasource=github-release depName=cloudfoundry/cli
 ENV CF_CLI_VERSION "8.6.0"
+# renovate: datasource=github-release depName=geofffranks/spruce
 ENV SPRUCE_VERSION "1.30.2"
 
 RUN apk add --no-cache $PACKAGES

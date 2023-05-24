@@ -17,6 +17,7 @@ ENV GOPATH /go
 ENV PATH /go/bin:/usr/local/go/bin:$PATH
 
 ENV GO_VERSION "1.20"
+# renovate: datasource=github-release depName=cloudfoundry/cli
 ENV CF_CLI_VERSION "8.6.0"
 ENV CF_LOG_CACHE_VERSION "2.1.0"
 

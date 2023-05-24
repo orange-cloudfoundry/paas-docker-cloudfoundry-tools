@@ -11,6 +11,7 @@ RUN apt-get update \
 
 WORKDIR /usr/local/bin
 
+# renovate: datasource=github-release depName=k14s/ytt
 ENV YTT_VERSION "0.40.1"
 ENV YTT_SUM 11222665c627b8f0a1443534a3dde3c9b3aac08b322d28e91f0e011e3aeb7df5
 ENV YTT_FILENAME ytt-linux-amd64
@@ -19,7 +20,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${YTT_FILENAME})" \
     && echo "${YTT_SUM}  ${YTT_FILENAME}" | sha256sum -c - \
     && mv ${YTT_FILENAME} ytt
 
-
+# renovate: datasource=github-release depName=cloudfoundry-incubator/credhub-cli
 ENV CREDHUB_CLI_VERSION 2.9.15
 ENV CREDHUB_CLI_SUM d61c738f65004afd35ed8dd5d17f57d0f1700629ad29e5335b906746f8958026
 ENV CREDHUB_CLI_FILENAME credhub-linux-${CREDHUB_CLI_VERSION}.tgz
@@ -28,6 +29,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${CREDHUB_CLI_FILENAME})" \
     && echo "${CREDHUB_CLI_SUM}  ${CREDHUB_CLI_FILENAME}" | sha256sum -c - \
     && tar zxvf ${CREDHUB_CLI_FILENAME}
 
+# We need to syncrhonize this kustomize version with embedded fluxcd version
 ENV KUSTOMIZE_VERSION 4.5.1
 ENV KUSTOMIZE_SUM cc26e18e814fd162dacd5e2a1357aa133fb91589e23a15ccc8b7c163fd259c54
 ENV KUSTOMIZE_FILENAME kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz
@@ -61,6 +63,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${HELM_FILENAME})" \
     && mv linux-amd64/helm helm \
     && rm -rf linux-amd64
 
+# renovate: datasource=github-release depName=kudobuilder/kuttl
 ENV KUTTL_VERSION 0.15.0
 ENV KUTTL_PLUGIN_SUM f6edcf22e238fc71b5aa389ade37a9efce596017c90f6994141c45215ba0f862
 ENV KUTTL_PLUGIN_FILENAME kubectl-kuttl_${KUTTL_VERSION}_linux_x86_64
@@ -70,6 +73,7 @@ RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGI
     && mv ${KUTTL_PLUGIN_FILENAME} kubectl-kuttl \
     && ln -s kubectl-kuttl kuttl
 
+# renovate: datasource=github-release depName=mikefarah/yq
 ENV YQ_VERSION 4.33.3
 ENV YQ_SUM 4ee662847c588c3ef2fec8bfb304e8739e3dbaba87ccb9a608d691c88f5b64dc
 ENV YQ_FILENAME yq_linux_amd64
@@ -79,6 +83,7 @@ RUN echo "Computed ${YQ_FILENAME} sha256sum: $(sha256sum ${YQ_FILENAME})" \
     && chmod +x ${YQ_FILENAME} \
     && mv ${YQ_FILENAME} /usr/local/bin/yq
 
+# renovate: datasource=github-release depName=cloudfoundry/bosh-cli
 ENV BOSH_CLI_VERSION 7.2.3
 ENV BOSH_CLI_SUM f090d6962a56d946f9592105f6a97956f77d4b6f527e184105355d3f46f354ad
 ENV BOSH_CLI_FILENAME bosh-cli-${BOSH_CLI_VERSION}-linux-amd64

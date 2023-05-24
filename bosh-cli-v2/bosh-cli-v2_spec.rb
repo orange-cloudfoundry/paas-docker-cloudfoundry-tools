@@ -41,10 +41,10 @@ describe "bosh-cli-v2 image" do
     expect(command('git --version').exit_status).to eq(0)
   end
 
-  it "can run credhub" do
+  it "can run credhub (#{CREDHUB_CLI_VERSION})" do
     cmd = command('credhub --version')
     expect(cmd.exit_status).to eq(0)
-    expect(cmd.stdout.match?(/#{CREDHUB_CLI_VERSION}/)).to eq(true)
+    expect(cmd.stdout.match?(/#{CREDHUB_CLI_VERSION}\n/)).to eq(true)
   end
 
   it "has `bash` available" do

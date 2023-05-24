@@ -1,7 +1,7 @@
 // Note: we use JSON5 to be able to use comments
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
+  extends: [
     "config:base",
     ":disableRateLimiting",
     ":rebaseStalePrs"
@@ -9,11 +9,13 @@
   "github-actions": {
     enabled: false
   },
-  "baseBranches": [
+  baseBranches: [
     "main"
   ],
+  repositories: [
 
-  "ignorePaths": [
+  ],
+  ignorePaths: [
     "terraform/**",
     "certstrap/**",
     "cf-acceptance-tests/**",
@@ -36,46 +38,50 @@
     "spec/**",
     "ubuntu/**"
   ],
-  "packageRules": [
+  packageRules: [
     {
-      "description": "@o-orand assignments",
-      "matchPackagePatterns": [
+      description: "@o-orand assignments",
+      matchPackagePatterns: [
         "*"
       ],
-      "assignees": [
+      assignees: [
         "o-orand"
       ]
     },
     {
-      "matchPackagePatterns": [".*"],
-      "addLabels": ["{{datasource}}","{{depName}}"]
+      matchPackagePatterns: [".*"],
+      addLabels: ["{{datasource}}","{{depName}}"]
     },
     {
-      "description": "Ruby: update spec files",
-      "matchDepNames": "ruby",
-      "matchFiles": [".+/*_spec\\.rb"]
+      description: "Ruby: update spec files",
+      matchDepNames: "ruby",
+      matchFiles: [".+/.*_spec\\.rb"]
     }
   ],
 
-  "regexManagers": [
+  regexManagers: [
     {
-      "description": "https://regex101.com/r/QUjPL3/1",
-      "fileMatch": [".+/*_spec\\.rb"],
-      "matchStrings": [
+      description: "https://regex101.com/r/QUjPL3/1",
+      fileMatch: [".+/.*_spec\\.rb"],
+      matchStrings: [
         "\\s*RUBY_VERSION\\s*=\\s*\"(?<currentValue>[a-z0-9\\.\\/\\-\\+]*)\".*$"
       ],
-      "depNameTemplate": "ruby",
-      "datasourceTemplate": "docker"
+      depNameTemplate: "ruby",
+      datasourceTemplate: "docker"
     },
     {
-      "description": "https://regex101.com/r/QUjPL3/1",
-      "fileMatch": [".+/Dockerfile$",".+/*_spec\\.rb"],
+      fileMatch: [".+/Dockerfile$",".+/.*_spec\\.rb"],
       "matchStrings": [
-        "ENV (?<depName>[A-Z0-9\\.\\/\\-_]*?)_VERSION \"?(?<currentValue>[a-z0-9\\.\\/\\-\\+]*)\"?.*$"
+        // For dockerfile: https://regex101.com/r/QUjPL3/2
+        "datasource=(?<datasource>.+) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versioning=(?<versioning>.+))?\\nENV .+_VERSION ?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?\\s*",
+        // For spec files: https://regex101.com/r/ifWHDK/1
+        "^.+_VERSION\\s*=\\s*\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?\\\"?\\s* #\\s*renovate: datasource=(?<datasource>.+) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versioning=(?<versioning>.+))?\\s*"
       ],
-      "datasourceTemplate": "github-releases",
-      "versioningTemplate": "regex:v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)?$"
+//      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
+      datasourceTemplate: "github-releases",
+      versioningTemplate: "regex:v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)?$"
     }
+
   ]
 }
 

@@ -2,11 +2,10 @@ require 'spec_helper'
 require 'docker'
 require 'serverspec'
 
-BOSH_CLI_VERSION="7.2.3-b36ee5199-2023-04-28T22:35:13Z"
-CREDHUB_CLI_VERSION='2.9.1'
-CF_CLI_VERSION="8.3.0"
+BOSH_CLI_VERSION="7.2.3"
+CF_CLI_VERSION="8.3.0" # renovate: datasource=github-release depName=cloudfoundry/cli
 SPRUCE_BIN = "/usr/local/bin/spruce"
-SPRUCE_VERSION = "1.30.2"
+SPRUCE_VERSION = "1.30.2" # renovate: datasource=github-release depName=geofffranks/spruce
 BOSH_ENV_DEPS = "build-essential zlib1g-dev openssl libxslt1-dev libxml2-dev \
     libssl-dev libreadline8 libreadline-dev libyaml-dev libsqlite3-dev sqlite3"
 CF_ENV_DEPS = "unzip curl openssl ca-certificates git libc6 bash jq gettext make"
@@ -30,8 +29,8 @@ describe "bosh-cli-v2-cf-cli image" do
 
   it "has the expected version of the Bosh CLI (#{BOSH_CLI_VERSION})" do
     expect(
-        command("bosh -v").stdout.strip
-    ).to eq("version #{BOSH_CLI_VERSION}")
+      command("bosh -v").stdout.strip
+    ).to match("version #{BOSH_CLI_VERSION}-")
   end
 
   it "has the expected version of the CF CLI (#{CF_CLI_VERSION})" do

@@ -2,9 +2,9 @@ require 'spec_helper'
 require 'docker'
 require 'serverspec'
 
-BOSH_CLI_VERSION="7.2.3"
-YTT_VERSION="0.40.1"
-CREDHUB_CLI_VERSION='2.9.1'
+BOSH_CLI_VERSION="7.2.3" # renovate: datasource=github-release depName=cloudfoundry/bosh-cli
+YTT_VERSION="0.40.1"  # renovate: datasource=github-release depName=cloudfoundry/bosh-cli
+CREDHUB_CLI_VERSION='2.9.1' # renovate: datasource=github-release depName=cloudfoundry-incubator/credhub-cli
 KUSTOMIZE_VERSION="4.5.1"
 KAPP_VERSION="0.46.0"
 KUBECTL_VERSION="1.21.10"
@@ -33,7 +33,7 @@ describe "k8s image" do
   it "has the expected version of credhub (#{CREDHUB_CLI_VERSION})" do
     expect(
         command("credhub --version").stdout.strip
-    ).to match("#{CREDHUB_CLI_VERSION}")
+    ).to match("#{CREDHUB_CLI_VERSION}\n")
   end
 
   it "has the expected version of Kustomize (#{KUSTOMIZE_VERSION})" do
