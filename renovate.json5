@@ -55,14 +55,14 @@
     {
       description: "Ruby: update spec files",
       matchDepNames: "ruby",
-      matchPaths: ["**/*_spec\\.rb"]
+      matchFiles: ["**/*_spec\\.rb"]
     }
   ],
 
   regexManagers: [
     {
       description: "https://regex101.com/r/QUjPL3/1",
-      matchPaths: ["**/*_spec\\.rb"],
+      fileMatch: [".*/.*_spec\\.rb"],
       matchStrings: [
         "\\s*RUBY_VERSION\\s*=\\s*\"(?<currentValue>[a-z0-9\\.\\/\\-\\+]*)\".*$"
       ],
@@ -70,7 +70,7 @@
       datasourceTemplate: "docker"
     },
     {
-      matchPaths: ["**/Dockerfile$", "**/*_spec\\.rb"],
+      fileMatch: [".*/Dockerfile$", ".*/.*_spec\\.rb"],
       "matchStrings": [
         // For dockerfile: https://regex101.com/r/QUjPL3/2
         "datasource=(?<datasource>.+) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versioning=(?<versioning>.+))?\\nENV .+_VERSION ?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?\\s*",
