@@ -19,14 +19,14 @@
 //      depNameTemplate: "ruby",
 //      datasourceTemplate: "docker",
       depNameTemplate: "ruby/ruby",
-      datasourceTemplate: "github-releases",
+      datasourceTemplate: "github-tags",
     },
     {
       "fileMatch": ["cf-cli/docker-images-versions-vars\\.yaml$"],
       "matchStrings": [
         "(?<depName>[a-z0-9/\\-_]*?): \"(?<currentValue>[a-z0-9\\.\\-]*?)\""
       ],
-      "datasourceTemplate": "github-releases",
+      "datasourceTemplate": "github-tags",
       "versioningTemplate": "loose"
     },
   ]
