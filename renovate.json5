@@ -20,6 +20,7 @@
 //      datasourceTemplate: "docker",
       depNameTemplate: "ruby/ruby",
       datasourceTemplate: "github-tags",
+      "versioningTemplate": "loose"
     },
     {
       "fileMatch": ["cf-cli/docker-images-versions-vars\\.yaml$"],
