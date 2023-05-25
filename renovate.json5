@@ -16,9 +16,11 @@
       matchStrings: [
         "^RUBY_VERSION=(?<currentValue>[a-z0-9\\.\\-]+)" // https://regex101.com/r/hTyRlz/1
       ],
-      depNameTemplate: "ruby",
-      datasourceTemplate: "docker",
-      "versioningTemplate": "docker"
+//      depNameTemplate: "ruby",
+//      datasourceTemplate: "docker",
+      depNameTemplate: "ruby/ruby",
+      datasourceTemplate: "github-releases",
+//      "versioningTemplate": "docker"
     },
     {
       "fileMatch": ["cf-cli/docker-images-versions-vars\\.rb$"],
