@@ -4,7 +4,7 @@ boynux/squid-exporter: "v1.9.2"
 busybox: "1.27.1"
 ruby: "3.0"
 
-envoyproxy/envoy: "v1.10.0"
+envoyproxy/envoy: "v1.26.1"
 
 mindflavor/prometheus-wireguard-exporter: "3.0.0"
 niedbalski/openstack-exporter-linux-amd64: "v1.3.0"
