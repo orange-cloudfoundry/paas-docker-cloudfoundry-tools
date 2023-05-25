@@ -1,6 +1,6 @@
 ---
 boshprometheus/bosh-exporter: "v3.3.0"
-boynux/squid-exporter: "v1.9.2"
+boynux/squid-exporter: "v1.10.4"
 busybox: "1.27.1"
 ruby: "3.0"
 
