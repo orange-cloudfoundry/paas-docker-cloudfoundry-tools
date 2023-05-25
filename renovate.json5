@@ -17,7 +17,7 @@
     {
       fileMatch: ["cf-cli/cf-cli_spec\.rb$"], //https://regex101.com/r/rIOdcZ/1
       matchStrings: [
-        "^RUBY_VERSION = \"(?<currentValue>[a-z0-9\\.\\-]+)\".*$" // https://regex101.com/r/hTyRlz/1
+        "^RUBY_VERSION=(?<currentValue>[a-z0-9\\.\\-]+)$" // https://regex101.com/r/hTyRlz/1
       ],
       depNameTemplate: "_/ruby",
       datasourceTemplate: "docker",
