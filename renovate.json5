@@ -18,7 +18,7 @@
       ],
 //      depNameTemplate: "ruby",
 //      datasourceTemplate: "docker",
-      depNameTemplate: "ruby/ruby",
+      depNameTemplate: "mindflavor/prometheus-wireguard-exporter",
       datasourceTemplate: "github-releases",
 //      "versioningTemplate": "docker"
     },
