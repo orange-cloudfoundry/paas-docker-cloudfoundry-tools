@@ -19,7 +19,7 @@
       matchStrings: [
         "^RUBY_VERSION = \"(?<currentValue>[a-z0-9\\.\\-]+)\".*$" // https://regex101.com/r/hTyRlz/1
       ],
-      depNameTemplate: "ruby",
+      depNameTemplate: "_/ruby",
       datasourceTemplate: "docker",
     },
 //    {
