@@ -63,7 +63,7 @@
     {
       fileMatch: ["_spec\\.rb$"], //https://regex101.com/r/rIOdcZ/1
       matchStrings: [
-        "^\\s*RUBY_VERSION\\s*=\\s*\"(?<currentValue>[a-z0-9\\.\\/\\-\\+]*)\".*$" // https://regex101.com/r/hTyRlz/1
+        "^RUBY_VERSION = \"(?<currentValue>[a-z0-9\\.\\-]+)\".*$" // https://regex101.com/r/hTyRlz/1
       ],
       depNameTemplate: "ruby",
       datasourceTemplate: "docker",
