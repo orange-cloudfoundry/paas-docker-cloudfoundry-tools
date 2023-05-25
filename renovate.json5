@@ -72,8 +72,8 @@
     {
       fileMatch: [".*/Dockerfile$", ".*/.*_spec\\.rb"],
       "matchStrings": [
-        // For dockerfile: https://regex101.com/r/QUjPL3/2
-        "datasource=(?<datasource>.+) depName=(?<depName>[\\w\\d\\//\\-\\_]+)\\nENV .+_VERSION ?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?\\s*",
+        // For dockerfile: https://regex101.com/r/QUjPL3/3
+        "datasource=(?<datasource>.+) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versioning=(?<versioning>.+))?\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*",
         // For spec files: https://regex101.com/r/ifWHDK/2
         "^.+_VERSION\\s*=\\s*[\\\"\\']?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?[\\\"\\']?\\s* #\\s*renovate: datasource=(?<datasource>.+) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versioning=(?<versioning>.+))?\\s*"
       ],
