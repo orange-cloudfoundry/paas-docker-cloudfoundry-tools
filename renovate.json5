@@ -50,11 +50,6 @@
     {
       matchPackagePatterns: [".*"],
       addLabels: ["{{datasource}}","{{depName}}"]
-    },
-    {
-      description: "Ruby: update spec files",
-      matchDepNames: "ruby",
-      matchFiles: ["_spec\\.rb$"]
     }
   ],
 
