@@ -20,16 +20,14 @@
 //      datasourceTemplate: "docker",
       depNameTemplate: "mindflavor/prometheus-wireguard-exporter",
       datasourceTemplate: "github-releases",
-//      "versioningTemplate": "docker"
     },
-//    {
-//      "fileMatch": ["cf-cli/docker-images-versions-vars\\.rb$"],
-//      "matchStrings": [
-//        "(?<depName>[a-z0-9/\\-_]*?): \"(?<currentValue>[a-z0-9\\.\\-]*?)\""
-//      ],
-//      "datasourceTemplate": "docker",
-//      "versioningTemplate": "docker"
-//    },
+    {
+      "fileMatch": ["cf-cli/docker-images-versions-vars\\.rb$"],
+      "matchStrings": [
+        "(?<depName>[a-z0-9/\\-_]*?): \"(?<currentValue>[a-z0-9\\.\\-]*?)\""
+      ],
+      "datasourceTemplate": "github-releases",
+    },
   ]
 }
 
