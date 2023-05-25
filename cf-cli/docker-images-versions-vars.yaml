@@ -1,4 +1,4 @@
 ---
-mirror/busybox: "1.27.1"
+mirror/busybox: "1.31.1"
 ruby/ruby: "3.0.0"
 
