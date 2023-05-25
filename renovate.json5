@@ -55,13 +55,23 @@
 
   regexManagers: [
     {
-      fileMatch: ["_spec\\.rb$"], //https://regex101.com/r/rIOdcZ/1
+      fileMatch: ["cf-cli/cf-cli_spec\.rb$"], //https://regex101.com/r/rIOdcZ/1
       matchStrings: [
         "^RUBY_VERSION = \"(?<currentValue>[a-z0-9\\.\\-]+)\".*$" // https://regex101.com/r/hTyRlz/1
       ],
       depNameTemplate: "ruby",
       datasourceTemplate: "docker",
     },
+//    {
+//      "fileMatch": ["shared-operators/docker-images/docker-images-versions-vars\\.yml$"],
+//      "matchStrings": [
+//        "(?<depName>[a-z0-9/\\-_]*?): \"(?<currentValue>[a-z0-9\\.\\-]*?)\"\\nn"
+//      ],
+//      "datasourceTemplate": "docker",
+//      "versioningTemplate": "docker"
+//    },
+    // https://docs.renovatebot.com/release-notes-for-major-versions/#breaking-changes
+    // datasource/github-releases: Regex Manager configurations relying on the github-release data-source with digests will have different digest semantics. The digest will now always correspond to the underlying Git SHA of the release/version. The old behavior can be preserved by switching to the github-release-attachments datasource
 //    {
 //      fileMatch: [".*/Dockerfile$", ".*/.*_spec\\.rb"],
 //      "matchStrings": [
