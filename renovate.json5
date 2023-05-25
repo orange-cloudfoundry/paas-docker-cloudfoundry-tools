@@ -18,9 +18,11 @@
       ],
 //      depNameTemplate: "ruby",
 //      datasourceTemplate: "docker",
-      depNameTemplate: "ruby/ruby",
+      depNameTemplate: "crossplane/crossplane",
       datasourceTemplate: "github-tags",
-      "versioningTemplate": "loose"
+      "versioningTemplate": "loose",
+      "extractVersionTemplate": "^v(?<version>.*)"
+
     },
     {
       "fileMatch": ["cf-cli/docker-images-versions-vars\\.yaml$"],
