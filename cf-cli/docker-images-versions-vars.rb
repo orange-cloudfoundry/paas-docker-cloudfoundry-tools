@@ -6,7 +6,7 @@ ruby: "3.0"
 
 envoyproxy/envoy: "v1.10.0"
 
-mindflavor/prometheus-wireguard-exporter: "3.0.0"
+mindflavor/prometheus-wireguard-exporter: "3.6.6"
 niedbalski/openstack-exporter-linux-amd64: "v1.3.0"
 pryorda/vmware_exporter: "v0.18.3"
 
