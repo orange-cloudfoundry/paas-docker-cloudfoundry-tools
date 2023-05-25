@@ -22,7 +22,7 @@
       datasourceTemplate: "github-releases",
     },
     {
-      "fileMatch": ["cf-cli/docker-images-versions-vars\\.rb$"],
+      "fileMatch": ["cf-cli/docker-images-versions-vars\\.yaml$"],
       "matchStrings": [
         "(?<depName>[a-z0-9/\\-_]*?): \"(?<currentValue>[a-z0-9\\.\\-]*?)\""
       ],
