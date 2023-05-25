@@ -26,7 +26,7 @@
     {
       "fileMatch": ["cf-cli/docker-images-versions-vars\\.yml$"],
       "matchStrings": [
-        "(?<depName>[a-z0-9/\\-_]*?): \"(?<currentValue>[a-z0-9\\.\\-]*?)\"\\nn"
+        "(?<depName>[a-z0-9/\\-_]*?): \"(?<currentValue>[a-z0-9\\.\\-]*?)\""
       ],
       "datasourceTemplate": "docker",
       "versioningTemplate": "docker"
