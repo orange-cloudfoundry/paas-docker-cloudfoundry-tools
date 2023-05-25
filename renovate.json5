@@ -21,6 +21,7 @@
       ],
       depNameTemplate: "ruby",
       datasourceTemplate: "docker",
+      "versioningTemplate": "docker"
     },
 //    {
 //      "fileMatch": ["shared-operators/docker-images/docker-images-versions-vars\\.yml$"],
