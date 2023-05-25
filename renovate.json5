@@ -23,14 +23,14 @@
       datasourceTemplate: "docker",
       "versioningTemplate": "docker"
     },
-//    {
-//      "fileMatch": ["shared-operators/docker-images/docker-images-versions-vars\\.yml$"],
-//      "matchStrings": [
-//        "(?<depName>[a-z0-9/\\-_]*?): \"(?<currentValue>[a-z0-9\\.\\-]*?)\"\\nn"
-//      ],
-//      "datasourceTemplate": "docker",
-//      "versioningTemplate": "docker"
-//    },
+    {
+      "fileMatch": ["shared-operators/docker-images/docker-images-versions-vars\\.yml$"],
+      "matchStrings": [
+        "(?<depName>[a-z0-9/\\-_]*?): \"(?<currentValue>[a-z0-9\\.\\-]*?)\"\\nn"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker"
+    },
     // https://docs.renovatebot.com/release-notes-for-major-versions/#breaking-changes
     // datasource/github-releases: Regex Manager configurations relying on the github-release data-source with digests will have different digest semantics. The digest will now always correspond to the underlying Git SHA of the release/version. The old behavior can be preserved by switching to the github-release-attachments datasource
 //    {
