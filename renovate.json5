@@ -63,7 +63,10 @@
     {
       fileMatch: [".*/.*_spec\\.rb"], //https://regex101.com/r/rIOdcZ/1
       matchStrings: [
-        "^\\s*RUBY_VERSION\\s*=\\s*\"(?<currentValue>[a-z0-9\\.\\/\\-\\+]*)\".*$" // https://regex101.com/r/hTyRlz/1
+        // https://docs.renovatebot.com/modules/manager/regex/#regular-expression-capture-groups
+        // The regex manager matches are done per-file and not per-line,
+        // you should be aware when using the ^ and/or $ regex assertions.
+        "\\s*RUBY_VERSION\\s*=\\s*\"(?<currentValue>[a-z0-9\\.\\/\\-\\+]*)\".*" // https://regex101.com/r/hTyRlz/1
       ],
       depNameTemplate: "ruby",
       datasourceTemplate: "docker"
@@ -75,9 +78,6 @@
         "datasource=(?<datasource>.+) depName=(?<depName>[\\w\\d\\//\\-\\_]+)\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*",
         // For spec files: https://regex101.com/r/ifWHDK/2
 
-        // https://docs.renovatebot.com/modules/manager/regex/#regular-expression-capture-groups
-        // The regex manager matches are done per-file and not per-line,
-        // you should be aware when using the ^ and/or $ regex assertions.
         ".+_VERSION\\s*=\\s*[\\\"\\']?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?[\\\"\\']?\\s* #\\s*renovate: datasource=(?<datasource>.+) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versioning=(?<versioning>.+))?\\s*"
       ],
       datasourceTemplate: "github-releases",
