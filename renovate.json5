@@ -14,6 +14,9 @@
     {
       fileMatch: ["cf-cli/cf-cli_spec\\.rb$"],
       matchStrings: [
+        // https://docs.renovatebot.com/modules/manager/regex/#regular-expression-capture-groups
+        // The regex manager matches are done per-file and not per-line,
+        // you should be aware when using the ^ and/or $ regex assertions.
         "RUBY_VERSION=(?<currentValue>[a-z0-9\\.\\-]+)"
       ],
 //      depNameTemplate: "ruby",
