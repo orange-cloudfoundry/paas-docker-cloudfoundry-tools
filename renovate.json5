@@ -12,46 +12,6 @@
   baseBranches: [
     "main"
   ],
-  repositories: [
-
-  ],
-  ignorePaths: [
-    "terraform/**",
-    "certstrap/**",
-    "cf-acceptance-tests/**",
-    "cf-uaac/**",
-    "concourse-keyval-resource/**",
-    "concourse-pool-resource/**",
-    "fast-startup-and-shutdown/**",
-    "golang/**",
-    "json-minify/**",
-    "keyval-resource/**",
-    "middleman/**",
-    "node/**",
-    "node-chromium/**",
-    "olhtbr-metadata-resource/**",
-    "paas-prometheus-exporter/**",
-    "psql/**",
-    "ruby/**",
-    "ruby-base/**",
-    "self-update-pipelines/**",
-    "ubuntu/**"
-  ],
-  packageRules: [
-    {
-      description: "@o-orand assignments",
-      matchPackagePatterns: [
-        "*"
-      ],
-      assignees: [
-        "o-orand"
-      ]
-    },
-    {
-      matchPackagePatterns: [".*"],
-      addLabels: ["{{datasource}}","{{depName}}"]
-    }
-  ],
 
   regexManagers: [
     {
