@@ -8,7 +8,7 @@ envoyproxy/envoy: "v1.10.0"
 
 mindflavor/prometheus-wireguard-exporter: "3.0.0"
 niedbalski/openstack-exporter-linux-amd64: "v1.3.0"
-pryorda/vmware_exporter: "v0.18.3"
+pryorda/vmware_exporter: "v0.18.4"
 
 sameersbn/squid: "3.5.27-2"
 thanosio/thanos: "v0.23.1"
