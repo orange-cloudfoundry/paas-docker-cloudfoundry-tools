@@ -29,15 +29,17 @@ RUN echo "Computed sha256sum: $(sha256sum ${CREDHUB_CLI_FILENAME})" \
     && echo "${CREDHUB_CLI_SUM}  ${CREDHUB_CLI_FILENAME}" | sha256sum -c - \
     && tar zxvf ${CREDHUB_CLI_FILENAME}
 
-# We need to syncrhonize this kustomize version with embedded fluxcd version
-ENV KUSTOMIZE_VERSION 4.5.1
-ENV KUSTOMIZE_SUM cc26e18e814fd162dacd5e2a1357aa133fb91589e23a15ccc8b7c163fd259c54
+# We need to synchronize this kustomize version with embedded fluxcd version and kubectl embedded version !
+# renovate: datasource=github-release depName=kubernetes-sigs/kustomize
+ENV KUSTOMIZE_VERSION 4.5.4
+ENV KUSTOMIZE_SUM 1159c5c17c964257123b10e7d8864e9fe7f9a580d4124a388e746e4003added3
 ENV KUSTOMIZE_FILENAME kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz
 ADD https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz .
 RUN echo "Computed sha256sum: $(sha256sum ${KUSTOMIZE_FILENAME})" \
     && echo "${KUSTOMIZE_SUM}  ${KUSTOMIZE_FILENAME}" | sha256sum -c - \
     && tar zxvf ${KUSTOMIZE_FILENAME}
 
+# renovate: datasource=github-release depName=k14s/kapp
 ENV KAPP_VERSION 0.46.0
 ENV KAPP_SUM 130f648cd921761b61bb03d7a0f535d1eea26e0b5fc60e2839af73f4ea98e22f
 ENV KAPP_FILENAME kapp-linux-amd64
@@ -46,6 +48,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${KAPP_FILENAME})" \
     && echo "${KAPP_SUM}  ${KAPP_FILENAME}" | sha256sum -c - \
     && mv kapp-linux-amd64 kapp
 
+# renovate: datasource=github-tag depName=kubernetes/kubectl
 ENV KUBECTL_VERSION 1.24.13
 ENV KUBECTL_SUM 52455fe485fa11c650ab07fea2e4856b5ea5a3e6ef8a1b3b6121e6361437fff9
 ENV KUBECTL_FILENAME kubectl
@@ -53,6 +56,7 @@ ADD https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION
 RUN echo "Computed sha256sum: $(sha256sum ${KUBECTL_FILENAME})" \
     && echo "${KUBECTL_SUM}  ${KUBECTL_FILENAME}" | sha256sum -c -
 
+# renovate: datasource=github-release depName=helm/helm
 ENV HELM_VERSION 3.12.0
 ENV HELM_SUM da36e117d6dbc57c8ec5bab2283222fbd108db86c83389eebe045ad1ef3e2c3b
 ENV HELM_FILENAME helm-v${HELM_VERSION}-linux-amd64.tar.gz
