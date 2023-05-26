@@ -7,7 +7,12 @@
     ":rebaseStalePrs"
   ],
   "github-actions": {
+    // We use dependa-bot for this
     enabled: false
+  },
+  bundler: {
+    // We use dependa-bot for this
+    enabled: false,
   },
   baseBranches: [
     "main"
@@ -35,6 +40,7 @@
     "ruby/**",
     "ruby-base/**",
     "self-update-pipelines/**",
+    "spec/**",
     "ubuntu/**"
   ],
   packageRules: [
@@ -73,11 +79,23 @@
     {
       fileMatch: [".*/Dockerfile$", ".*/.*_spec\\.rb"],
       "matchStrings": [
-        // For dockerfile: https://regex101.com/r/QUjPL3/4
-        "#\\s*renovate: datasource=(?<datasource>.+) depName=(?<depName>[\\w\\d\\//\\-\\_]+)\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*",
+        // For dockerfile: https://regex101.com/r/QUjPL3/3
+        "datasource=(?<datasource>github-tags) depName=(?<depName>kubernetes\/kubectl)\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*",
         // For spec files: https://regex101.com/r/ifWHDK/2
 
-        ".+_VERSION\\s*=\\s*[\\\"\\']?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?[\\\"\\']?\\s* #\\s*renovate: datasource=(?<datasource>.+) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versioning=(?<versioning>.+))?\\s*"
+        ".+_VERSION\\s*=\\s*[\\\"\\']?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?[\\\"\\']?\\s* #\\s*renovate: datasource=(?<datasource>github-tags) depName=(?<depName>kubernetes/kubectl)( versioning=(?<versioning>.+))?\\s*"
+      ],
+      //versioningTemplate: "regex:(?<major>\\d+\\.\\d+)\\.(?<minor>\\d+)?$", => we cannot use this as renovate detect 1 instead of 1.24 as major
+      versioningTemplate: "regex:^(\\d+\\.)?(?<major>\\d+)\\.(?<minor>\\d+)?$",
+      extractVersionTemplate: "^(kubernetes-)?v?(?<version>.*)$"
+    },
+    {
+      fileMatch: [".*/Dockerfile$", ".*/.*_spec\\.rb"],
+      "matchStrings": [
+        // For dockerfile: https://regex101.com/r/QUjPL3/3
+        "datasource=(?<datasource>github-releases) depName=(?<depName>[\\w\\d\\//\\-\\_]+)\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*",
+        // For spec files: https://regex101.com/r/ifWHDK/2
+        ".+_VERSION\\s*=\\s*[\\\"\\']?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?[\\\"\\']?\\s* #\\s*renovate: datasource=(?<datasource>github-releases) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versioning=(?<versioning>.+))?\\s*"
       ],
       // datasourceTemplate: "{{datasource}}", // should not be required as we extract datasource
       versioningTemplate: "regex:(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)?$",

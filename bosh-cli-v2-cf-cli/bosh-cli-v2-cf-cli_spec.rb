@@ -3,9 +3,9 @@ require 'docker'
 require 'serverspec'
 
 BOSH_CLI_VERSION="7.2.3"
-CF_CLI_VERSION="8.3.0" # renovate: datasource=github-release depName=cloudfoundry/cli
+CF_CLI_VERSION="8.3.0" # renovate: datasource=github-releases depName=cloudfoundry/cli
 SPRUCE_BIN = "/usr/local/bin/spruce"
-SPRUCE_VERSION = "1.30.2" # renovate: datasource=github-release depName=geofffranks/spruce
+SPRUCE_VERSION = "1.30.2" # renovate: datasource=github-releases depName=geofffranks/spruce
 BOSH_ENV_DEPS = "build-essential zlib1g-dev openssl libxslt1-dev libxml2-dev \
     libssl-dev libreadline8 libreadline-dev libyaml-dev libsqlite3-dev sqlite3"
 CF_ENV_DEPS = "unzip curl openssl ca-certificates git libc6 bash jq gettext make"

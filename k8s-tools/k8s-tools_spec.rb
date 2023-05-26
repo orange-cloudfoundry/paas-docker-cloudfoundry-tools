@@ -2,14 +2,14 @@ require 'spec_helper'
 require 'docker'
 require 'serverspec'
 
-BOSH_CLI_VERSION="7.2.3" # renovate: datasource=github-release depName=cloudfoundry/bosh-cli
-YTT_VERSION="0.40.1"  # renovate: datasource=github-release depName=k14s/ytt
-CREDHUB_CLI_VERSION='2.9.1' # renovate: datasource=github-release depName=cloudfoundry/credhub-cli
-KUSTOMIZE_VERSION="4.5.4" # renovate: datasource=github-release depName=kubernetes-sigs/kustomize
-KAPP_VERSION="0.46.0" # renovate: datasource=github-release depName=14s/kapp
-KUBECTL_VERSION="1.24.13" # renovate: datasource=github-tag depName=kubernetes/kubectl
-HELM_VERSION="3.12.0" # renovate: datasource=github-release depName=helm/helm
-KUTTL_VERSION="0.15.0" # renovate: datasource=github-release depName=kudobuilder/kuttl
+BOSH_CLI_VERSION="7.2.3" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
+YTT_VERSION="0.40.1"  # renovate: datasource=github-releases depName=k14s/ytt
+CREDHUB_CLI_VERSION='2.9.1' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
+KUSTOMIZE_VERSION="4.5.4" # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
+KAPP_VERSION="0.46.0" # renovate: datasource=github-releases depName=k14s/kapp
+KUBECTL_VERSION="1.24.13" # renovate: datasource=github-tags depName=kubernetes/kubectl
+HELM_VERSION="3.12.0" # renovate: datasource=github-releases depName=helm/helm
+KUTTL_VERSION="0.15.0" # renovate: datasource=github-releases depName=kudobuilder/kuttl
 
 DEPS = "unzip curl openssl ca-certificates git libc6 bash jq gettext"
 

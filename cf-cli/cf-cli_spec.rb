@@ -2,9 +2,9 @@ require 'spec_helper'
 require 'docker'
 require 'serverspec'
 
-CF_CLI_VERSION="8.6.0" # renovate: datasource=github-release depName=cloudfoundry/cli
+CF_CLI_VERSION="8.6.0" # renovate: datasource=github-releases depName=cloudfoundry/cli
 SPRUCE_BIN = "/usr/local/bin/spruce"
-SPRUCE_VERSION = "1.30.2" # renovate: datasource=github-release depName=geofffranks/spruce
+SPRUCE_VERSION = "1.30.2" # renovate: datasource=github-releases depName=geofffranks/spruce
 RUBY_VERSION = "3.1"
 
 describe "cf-cli image" do
