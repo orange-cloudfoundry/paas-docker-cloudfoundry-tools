@@ -4,7 +4,7 @@ FROM elpaasoci/bosh-cli-v2:latest
 ENV CF_PACKAGES "unzip curl openssl ca-certificates git libc6 bash jq gettext make"
 # renovate: datasource=github-release-attachments depName=cloudfoundry/cli
 ENV CF_CLI_VERSION "8.3.0"
-# renovate: datasource=github-release-attachments depName=geofffranks/spruce
+# renovate: datasource=github-release-attachments depName=geofffranks/spruce versionPrefix=v
 ENV SPRUCE_VERSION "1.30.2"
 
 # we also use apt-get as we use an Ubuntu image, not an Alpine

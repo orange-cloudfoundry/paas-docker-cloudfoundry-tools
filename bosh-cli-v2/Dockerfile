@@ -1,6 +1,6 @@
 FROM ruby:3.1-slim-bullseye
 
-# renovate: datasource=github-release-attachments depName=cloudfoundry/bosh-cli
+# renovate: datasource=github-release-attachments depName=cloudfoundry/bosh-cli versionPrefix=v
 ENV BOSH_CLI_VERSION 7.2.3
 ENV BOSH_CLI_SUM f090d6962a56d946f9592105f6a97956f77d4b6f527e184105355d3f46f354ad
 ENV BOSH_CLI_FILENAME bosh-cli-${BOSH_CLI_VERSION}-linux-amd64
@@ -36,7 +36,7 @@ RUN wget -nv https://github.com/cloudfoundry/credhub-cli/releases/download/${CRE
   && chmod +x credhub \
   && mv credhub /usr/local/bin/credhub
 
-# renovate: datasource=github-release-attachments depName=mikefarah/yq
+# renovate: datasource=github-release-attachments depName=mikefarah/yq versionPrefix=v
 ENV YQ_VERSION 4.33.3
 ENV YQ_SUM 4ee662847c588c3ef2fec8bfb304e8739e3dbaba87ccb9a608d691c88f5b64dc
 ENV YQ_FILENAME yq_linux_amd64
