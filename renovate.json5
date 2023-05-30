@@ -107,7 +107,7 @@
       // datasourceTemplate: "{{datasource}}", // should not be required as we extract datasource
       versioningTemplate: "regex:(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)?$",
 //      extractVersionTemplate: "^v?(?<version>.*)$",
-      extractVersionTemplate: "{{#if versionPrefix}}^{{versionPrefix}}(?<version>.*){{else}}(?<version>.*){{/if}}"
+      extractVersionTemplate: "{{#if versionPrefix}}^v(?<version>.*){{else}}(?<version>.*){{/if}}"
 
     }
   ]
