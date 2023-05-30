@@ -100,7 +100,7 @@
       fileMatch: [".*/Dockerfile$", ".*/.*_spec\\.rb"],
       "matchStrings": [
         // For dockerfile: https://regex101.com/r/0nLKkX/1
-        "/datasource=(?<datasource>github-release-attachments) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versionPrefix=(?<versionPrefix>.+))?\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*.+_SUM +(?<currentDigest>[a-z0-9]+)\\n/gm",
+        "datasource=(?<datasource>github-release-attachments) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versionPrefix=(?<versionPrefix>.+))?\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*.+_SUM +(?<currentDigest>[a-z0-9]+)\\n",
         // For spec files: https://regex101.com/r/ifWHDK/2
         ".+_VERSION\\s*=\\s*[\\\"\\']?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?[\\\"\\']?\\s* #\\s*renovate: datasource=(?<datasource>github-release-attachments) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versioning=(?<versioning>.+))?\\s*"
       ],
