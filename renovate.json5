@@ -66,6 +66,11 @@
       // opt in for a PR for each K8S minor bump, e.G. 1.20.x to 1.21.y
       matchDepNames: "kubernetes/kubectl",
       separateMinorPatch: "true"
+    },
+    {
+      // Add checksums extraction tip to yq packaqe
+      matchDepNames: "mikefarah/yq",
+      prBodyNotes: ["To easily extract checksums: curl -sSL https://github.com/mikefarah/yq/releases/download/v{{version}}/checksums |grep \"yq_linux_amd64 \"|cut -d' ' -f37"]
     }
   ],
 
