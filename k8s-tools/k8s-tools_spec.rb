@@ -7,7 +7,7 @@ YTT_VERSION="0.40.1"  # renovate: datasource=github-releases depName=k14s/ytt
 CREDHUB_CLI_VERSION='2.9.16' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
 KUSTOMIZE_VERSION="4.5.4" # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
 KAPP_VERSION="0.56.0" # renovate: datasource=github-releases depName=k14s/kapp
-KUBECTL_VERSION="1.24.13" # renovate: datasource=github-tags depName=kubernetes/kubectl
+KUBECTL_VERSION="1.24.14" # renovate: datasource=github-tags depName=kubernetes/kubectl
 HELM_VERSION="3.12.0" # renovate: datasource=github-releases depName=helm/helm
 KUTTL_VERSION="0.15.0" # renovate: datasource=github-releases depName=kudobuilder/kuttl
 
