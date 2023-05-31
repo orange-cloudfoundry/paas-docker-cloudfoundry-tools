@@ -50,7 +50,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${KAPP_FILENAME})" \
 
 # renovate: datasource=github-tags depName=kubernetes/kubectl
 ENV KUBECTL_VERSION 1.24.14
-ENV KUBECTL_SUM 52455fe485fa11c650ab07fea2e4856b5ea5a3e6ef8a1b3b6121e6361437fff9
+ENV KUBECTL_SUM 3ef141cb84803fbdcea7db270e9d6678ba064c2c9f2eccce91adedf09daba706
 ENV KUBECTL_FILENAME kubectl
 ADD https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl .
 RUN echo "Computed sha256sum: $(sha256sum ${KUBECTL_FILENAME})" \
