@@ -41,7 +41,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${KUSTOMIZE_FILENAME})" \
 
 # renovate: datasource=github-releases depName=k14s/kapp
 ENV KAPP_VERSION 0.56.0
-ENV KAPP_SUM 130f648cd921761b61bb03d7a0f535d1eea26e0b5fc60e2839af73f4ea98e22f
+ENV KAPP_SUM 2764aac38435b1178a9c232c072b6e184bfc8802268580ab911a1e84eebc42c1
 ENV KAPP_FILENAME kapp-linux-amd64
 ADD https://github.com/k14s/kapp/releases/download/v${KAPP_VERSION}/kapp-linux-amd64 .
 RUN echo "Computed sha256sum: $(sha256sum ${KAPP_FILENAME})" \
