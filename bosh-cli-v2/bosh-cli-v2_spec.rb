@@ -3,7 +3,7 @@ require 'docker'
 require 'serverspec'
 
 BOSH_CLI_VERSION="7.2.3"
-CREDHUB_CLI_VERSION='2.9.15'
+CREDHUB_CLI_VERSION='2.9.16' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
 
 BOSH_ENV_DEPS = "build-essential zlib1g-dev openssl libxslt1-dev libxml2-dev \
     libssl-dev libreadline8 libreadline-dev libyaml-dev libsqlite3-dev sqlite3"
