@@ -159,8 +159,9 @@ jobs:
       - name: Create the tag
         uses: julbme/gh-action-manage-tag@v1
         with:
-          name: ${{ github.ref }}
+          name: ${{ github.sha }}
           state: present
           from: ${{ github.ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ github.ref == 'refs/heads/main' }}
