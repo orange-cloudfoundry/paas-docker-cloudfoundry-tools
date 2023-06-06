@@ -155,3 +155,12 @@ jobs:
           labels: ${{ steps.meta-dockerhub.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Create the tag
+        uses: julbme/gh-action-manage-tag@v1
+        with:
+          name: ${{ github.ref }}
+          state: present
+          from: ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
