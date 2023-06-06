@@ -12,7 +12,7 @@ RUN apt-get update \
 WORKDIR /usr/local/bin
 
 # renovate: datasource=github-releases depName=k14s/ytt
-ENV YTT_VERSION "0.45.1"
+ENV YTT_VERSION "0.45.2"
 ENV YTT_SUM 01606d885cdbce02340faadc29a83b5415280bc610e7cff3f639385d8f504aea
 ENV YTT_FILENAME ytt-linux-amd64
 ADD https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/${YTT_FILENAME} .
