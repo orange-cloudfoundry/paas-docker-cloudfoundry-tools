@@ -206,18 +206,17 @@ jobs:
             docker manifest inspect $DOCKERHUB_ORG/$image:$GITHUB_SHA
           done
 
-  add_tag_for_renovate:
-    name: Auto tag main
+  push_for_renovate:
+    name: Publish commit for renovate
     runs-on: ubuntu-latest
     needs: [ check_published_images ]
     steps:
       -
-        name: Create the tag
-        uses: julbme/gh-action-manage-tag@v1
+        name: push
+        uses: github-actions-x/commit@v2.9
         with:
-          name: ${{ github.sha }}
-          state: present
-          from: ${{ github.ref }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{ github.ref == 'refs/heads/main' }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: 'main-validated'
+        if: ${{ github.ref_name == 'main' }}
+
+
