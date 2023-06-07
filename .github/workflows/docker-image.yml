@@ -211,6 +211,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ check_published_images ]
     steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+        if: ${{ github.ref_name == 'main' }}
+
       -
         name: push
         uses: github-actions-x/commit@v2.9
