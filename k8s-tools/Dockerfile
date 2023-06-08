@@ -12,7 +12,7 @@ RUN apt-get update \
 WORKDIR /usr/local/bin
 
 # renovate: datasource=github-releases depName=k14s/ytt
-ENV YTT_VERSION "0.45.1"
+ENV YTT_VERSION "0.45.2"
 ENV YTT_SUM 01606d885cdbce02340faadc29a83b5415280bc610e7cff3f639385d8f504aea
 ENV YTT_FILENAME ytt-linux-amd64
 ADD https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/${YTT_FILENAME} .
@@ -40,7 +40,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${KUSTOMIZE_FILENAME})" \
     && tar zxvf ${KUSTOMIZE_FILENAME}
 
 # renovate: datasource=github-releases depName=k14s/kapp
-ENV KAPP_VERSION 0.56.0
+ENV KAPP_VERSION 0.57.0
 ENV KAPP_SUM 2764aac38435b1178a9c232c072b6e184bfc8802268580ab911a1e84eebc42c1
 ENV KAPP_FILENAME kapp-linux-amd64
 ADD https://github.com/k14s/kapp/releases/download/v${KAPP_VERSION}/kapp-linux-amd64 .
