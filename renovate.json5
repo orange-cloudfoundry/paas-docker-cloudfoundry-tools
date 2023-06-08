@@ -71,7 +71,35 @@
       // Add checksums extraction tip to yq packaqe
       matchDepNames: "mikefarah/yq",
       prBodyNotes: ["To easily extract checksums: curl -sSL https://github.com/mikefarah/yq/releases/download/v{{version}}/checksums |grep \"yq_linux_amd64 \"|cut -d' ' -f37"]
-    }
+    },
+    {
+      matchDepNames: [
+        "mikefarah/yq",
+        "k14s/ytt",
+        "k14s/kapp",
+        "kudobuilder/kuttl"
+      ],
+      description: "Group k8s related clis bump unless it is a major version",
+      groupName: "K8s related bumps",
+      matchUpdateTypes: ["patch", "minor"]
+    },
+    {
+      matchDepNames: [
+        "kubernetes/kubectl"
+      ],
+      description: "Group k8s related clis bump unless it is a major version",
+      groupName: "K8s related bumps",
+      matchUpdateTypes: ["patch"]
+    },
+    {
+      matchDepNames: [
+        "cloudfoundry/credhub-cli",
+        "cloudfoundry/cli"
+      ],
+      description: "Group cloudfoundry org clis patch bump",
+      groupName: "CF org bumps",
+      matchUpdateTypes: ["patch"]
+    },
   ],
 
   regexManagers: [
