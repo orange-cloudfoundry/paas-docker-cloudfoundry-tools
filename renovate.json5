@@ -12,7 +12,7 @@
   },
   bundler: {
     // We use dependa-bot for this
-    enabled: false,
+    enabled: false
   },
   baseBranches: [
     "main"
@@ -82,6 +82,7 @@
       description: "Group k8s related clis bump unless it is a major version",
       groupName: "K8s related bumps",
       matchUpdateTypes: ["patch", "minor"]
+
     },
     {
       matchDepNames: [
@@ -99,9 +100,9 @@
       description: "Group cloudfoundry org clis patch bump",
       groupName: "CF org bumps",
       matchUpdateTypes: ["patch"]
-    },
+    }
   ],
-
+  schedule: ["once a week on tuesday"],
   regexManagers: [
     {
       fileMatch: [".*/.*_spec\\.rb"], //https://regex101.com/r/rIOdcZ/1
