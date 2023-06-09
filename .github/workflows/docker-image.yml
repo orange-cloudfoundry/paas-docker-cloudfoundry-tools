@@ -222,6 +222,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           push-branch: 'main-validated'
+          rebase: true
         if: ${{ github.ref_name == 'main' }}
 
 
