@@ -10,6 +10,7 @@ KAPP_VERSION="0.57.0" # renovate: datasource=github-releases depName=k14s/kapp
 KUBECTL_VERSION="1.24.14" # renovate: datasource=github-tags depName=kubernetes/kubectl
 HELM_VERSION="3.12.0" # renovate: datasource=github-releases depName=helm/helm
 KUTTL_VERSION="0.15.0" # renovate: datasource=github-releases depName=kudobuilder/kuttl
+RUBY_VERSION = "3.1"
 
 DEPS = "unzip curl openssl ca-certificates git libc6 bash jq gettext"
 
@@ -89,10 +90,10 @@ describe "k8s image" do
     expect(cmd.exit_status).to eq(0)
   end
 
-  it "has ruby 3.1 available" do
+  it "has ruby #{RUBY_VERSION} available" do
     cmd = command("ruby -v")
     expect(cmd.exit_status).to eq(0)
-    expect(cmd.stdout).to match(/^ruby 3.1/)
+    expect(cmd.stdout).to match(/^ruby #{RUBY_VERSION}/)
   end
 
   it "has ruby json gem available" do
