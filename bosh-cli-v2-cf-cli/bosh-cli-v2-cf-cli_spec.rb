@@ -9,6 +9,7 @@ SPRUCE_VERSION = "1.30.2" # renovate: datasource=github-releases depName=geofffr
 BOSH_ENV_DEPS = "build-essential zlib1g-dev openssl libxslt1-dev libxml2-dev \
     libssl-dev libreadline8 libreadline-dev libyaml-dev libsqlite3-dev sqlite3"
 CF_ENV_DEPS = "unzip curl openssl ca-certificates git libc6 bash jq gettext make"
+RUBY_VERSION = "3.1"
 
 describe "bosh-cli-v2-cf-cli image" do
   before(:all) {
@@ -68,10 +69,10 @@ describe "bosh-cli-v2-cf-cli image" do
     expect(cmd.exit_status).to eq(0)
   end
 
-  it "has ruby 3.1 available" do
+  it "has ruby #{RUBY_VERSION} available" do
     cmd = command("ruby -v")
     expect(cmd.exit_status).to eq(0)
-    expect(cmd.stdout).to match(/^ruby 3.1/)
+    expect(cmd.stdout).to match(/^ruby #{RUBY_VERSION}/)
   end
 
   it "has ruby json gem available" do
