@@ -4,6 +4,7 @@ require 'serverspec'
 
 BOSH_CLI_VERSION="7.2.3" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 CREDHUB_CLI_VERSION='2.9.16' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
+RUBY_VERSION = "3.1"
 
 BOSH_ENV_DEPS = "build-essential zlib1g-dev openssl libxslt1-dev libxml2-dev \
     libssl-dev libreadline8 libreadline-dev libyaml-dev libsqlite3-dev sqlite3"
@@ -82,10 +83,10 @@ describe "bosh-cli-v2 image" do
     end
   end
 
-  it "has ruby 3.1 available" do
+  it "has ruby #{RUBY_VERSION} available" do
     cmd = command("ruby -v")
     expect(cmd.exit_status).to eq(0)
-    expect(cmd.stdout).to match(/^ruby 3.1/)
+    expect(cmd.stdout).to match(/^ruby #{RUBY_VERSION}/)
   end
 
   it "does not contain the compiled CPI packages" do
