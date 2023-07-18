@@ -4,7 +4,7 @@ require 'serverspec'
 
 BOSH_CLI_VERSION="7.2.3" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 YTT_VERSION="0.45.2"  # renovate: datasource=github-releases depName=k14s/ytt
-CREDHUB_CLI_VERSION='2.9.16' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
+CREDHUB_CLI_VERSION='2.9.17' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
 KUSTOMIZE_VERSION="4.5.4" # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
 KAPP_VERSION="0.57.0" # renovate: datasource=github-releases depName=k14s/kapp
 KUBECTL_VERSION="1.24.15" # renovate: datasource=github-tags depName=kubernetes/kubectl
