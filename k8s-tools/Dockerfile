@@ -13,7 +13,7 @@ WORKDIR /usr/local/bin
 
 # renovate: datasource=github-releases depName=k14s/ytt
 ENV YTT_VERSION "0.45.4"
-ENV YTT_SUM c909d88845ce55430a91a1cf9db5e3f14ffa8ce53d6ecb42e7ff3acf56a2037f
+ENV YTT_SUM 9bf62175c7cc0b54f9731a5b87ee40250f0457b1fce1b0b36019c2f8d96db8f8
 ENV YTT_FILENAME ytt-linux-amd64
 ADD https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/${YTT_FILENAME} .
 RUN echo "Computed sha256sum: $(sha256sum ${YTT_FILENAME})" \
