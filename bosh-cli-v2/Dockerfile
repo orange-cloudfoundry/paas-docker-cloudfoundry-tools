@@ -1,8 +1,8 @@
 FROM ruby:3.1-slim-bullseye
 
 # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
-ENV BOSH_CLI_VERSION 7.2.3
-ENV BOSH_CLI_SUM f090d6962a56d946f9592105f6a97956f77d4b6f527e184105355d3f46f354ad
+ENV BOSH_CLI_VERSION 7.3.1
+ENV BOSH_CLI_SUM f6f80461208f186aa3587b25abc12b86e217e7c96594e335de3c17f4ed683a3f
 ENV BOSH_CLI_FILENAME bosh-cli-${BOSH_CLI_VERSION}-linux-amd64
 
 ENV DEBIAN_PACKAGES "ca-certificates wget git openssh-client file jq"
@@ -10,9 +10,6 @@ ENV DEBIAN_PACKAGES "ca-certificates wget git openssh-client file jq"
 # https://bosh.io/docs/cli-env-deps.html
 ENV BOSH_ENV_DEPS "build-essential zlib1g-dev openssl libxslt1-dev \
   libxml2-dev libssl-dev libreadline8 libreadline-dev libyaml-dev libsqlite3-dev sqlite3"
-
-ENV BOSH_AWS_CPI_URL https://bosh.io/d/github.com/cloudfoundry/bosh-aws-cpi-release?v=97
-ENV BOSH_AWS_CPI_CHECKSUM b6aa84bc178e5cc99faa55a89943214c33488d5f
 
 RUN apt-get update \
   && apt-get -y upgrade \
@@ -26,8 +23,8 @@ RUN wget -nv https://s3.amazonaws.com/bosh-cli-artifacts/${BOSH_CLI_FILENAME} \
   && mv ${BOSH_CLI_FILENAME} /usr/local/bin/bosh
 
 # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
-ENV CREDHUB_CLI_VERSION 2.9.16
-ENV CREDHUB_CLI_SUM ef37b139ee6e588cc32bc550fbe3be36d1430085347fab2b1629c1f4af5cc04f
+ENV CREDHUB_CLI_VERSION 2.9.19
+ENV CREDHUB_CLI_SUM dcb942badda5db92ed25fa20eefe110a39f8af31ae6cd978aa5b1f0241ae05a6
 ENV CREDHUB_CLI_FILENAME credhub-linux-${CREDHUB_CLI_VERSION}.tgz
 
 RUN wget -nv https://github.com/cloudfoundry/credhub-cli/releases/download/${CREDHUB_CLI_VERSION}/${CREDHUB_CLI_FILENAME} \
@@ -37,8 +34,8 @@ RUN wget -nv https://github.com/cloudfoundry/credhub-cli/releases/download/${CRE
   && mv credhub /usr/local/bin/credhub
 
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION 4.34.1
-ENV YQ_SUM c5a92a572b3bd0024c7b1fe8072be3251156874c05f017c23f9db7b3254ae71a
+ENV YQ_VERSION 4.35.1
+ENV YQ_SUM bd695a6513f1196aeda17b174a15e9c351843fb1cef5f9be0af170f2dd744f08
 ENV YQ_FILENAME yq_linux_amd64
 ENV YQ_REPO github.com/mikefarah/yq
 RUN wget -nv https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} \

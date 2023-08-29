@@ -1,5 +1,5 @@
 ---
-name: "Image: awscli"
+name: "Image: node-chromium"
 permissions:
   actions: write # so 'cancel-workflow-action' can function
 
@@ -16,7 +16,7 @@ jobs:
   workflows:
     uses: ./.github/workflows/build-image-base.yml
     with:
-      image: awscli
+      image: node-chromium
       platforms: linux/amd64,linux/arm64
       test_platform: linux/amd64
     secrets: inherit
