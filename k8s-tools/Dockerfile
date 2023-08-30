@@ -9,11 +9,12 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends ${PACKAGES} \
   && rm -rf /var/lib/apt/lists/*
 
+
 WORKDIR /usr/local/bin
 
 # renovate: datasource=github-releases depName=k14s/ytt
-ENV YTT_VERSION "0.45.2"
-ENV YTT_SUM c909d88845ce55430a91a1cf9db5e3f14ffa8ce53d6ecb42e7ff3acf56a2037f
+ENV YTT_VERSION "0.45.4"
+ENV YTT_SUM 9bf62175c7cc0b54f9731a5b87ee40250f0457b1fce1b0b36019c2f8d96db8f8
 ENV YTT_FILENAME ytt-linux-amd64
 ADD https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/${YTT_FILENAME} .
 RUN echo "Computed sha256sum: $(sha256sum ${YTT_FILENAME})" \
@@ -21,8 +22,8 @@ RUN echo "Computed sha256sum: $(sha256sum ${YTT_FILENAME})" \
     && mv ${YTT_FILENAME} ytt
 
 # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
-ENV CREDHUB_CLI_VERSION 2.9.16
-ENV CREDHUB_CLI_SUM ef37b139ee6e588cc32bc550fbe3be36d1430085347fab2b1629c1f4af5cc04f
+ENV CREDHUB_CLI_VERSION 2.9.19
+ENV CREDHUB_CLI_SUM dcb942badda5db92ed25fa20eefe110a39f8af31ae6cd978aa5b1f0241ae05a6
 ENV CREDHUB_CLI_FILENAME credhub-linux-${CREDHUB_CLI_VERSION}.tgz
 ADD https://github.com/cloudfoundry/credhub-cli/releases/download/${CREDHUB_CLI_VERSION}/${CREDHUB_CLI_FILENAME} .
 RUN echo "Computed sha256sum: $(sha256sum ${CREDHUB_CLI_FILENAME})" \
@@ -40,8 +41,8 @@ RUN echo "Computed sha256sum: $(sha256sum ${KUSTOMIZE_FILENAME})" \
     && tar zxvf ${KUSTOMIZE_FILENAME}
 
 # renovate: datasource=github-releases depName=k14s/kapp
-ENV KAPP_VERSION 0.57.0
-ENV KAPP_SUM f71adcf7292aa5a38f4fd8925bec27ab3af61e24e2eed122cb4856381c17efc1
+ENV KAPP_VERSION 0.58.0
+ENV KAPP_SUM b253ea9cf6add07f9497955147dc12e8612c24c36dc9929c9a4fecdc76752bd3
 ENV KAPP_FILENAME kapp-linux-amd64
 ADD https://github.com/k14s/kapp/releases/download/v${KAPP_VERSION}/kapp-linux-amd64 .
 RUN echo "Computed sha256sum: $(sha256sum ${KAPP_FILENAME})" \
@@ -78,8 +79,8 @@ RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGI
     && ln -s kubectl-kuttl kuttl
 
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION 4.34.1
-ENV YQ_SUM c5a92a572b3bd0024c7b1fe8072be3251156874c05f017c23f9db7b3254ae71a
+ENV YQ_VERSION 4.35.1
+ENV YQ_SUM bd695a6513f1196aeda17b174a15e9c351843fb1cef5f9be0af170f2dd744f08
 ENV YQ_FILENAME yq_linux_amd64
 ADD https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} .
 RUN echo "Computed ${YQ_FILENAME} sha256sum: $(sha256sum ${YQ_FILENAME})" \
@@ -88,8 +89,8 @@ RUN echo "Computed ${YQ_FILENAME} sha256sum: $(sha256sum ${YQ_FILENAME})" \
     && mv ${YQ_FILENAME} /usr/local/bin/yq
 
 # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
-ENV BOSH_CLI_VERSION 7.2.3
-ENV BOSH_CLI_SUM f090d6962a56d946f9592105f6a97956f77d4b6f527e184105355d3f46f354ad
+ENV BOSH_CLI_VERSION 7.3.1
+ENV BOSH_CLI_SUM f6f80461208f186aa3587b25abc12b86e217e7c96594e335de3c17f4ed683a3f
 ENV BOSH_CLI_FILENAME bosh-cli-${BOSH_CLI_VERSION}-linux-amd64
 ADD https://s3.amazonaws.com/bosh-cli-artifacts/${BOSH_CLI_FILENAME} .
 RUN echo "Computed ${BOSH_CLI_FILENAME} sha256sum: $(sha256sum ${BOSH_CLI_FILENAME})" \
