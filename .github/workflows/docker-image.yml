@@ -17,7 +17,8 @@ jobs:
   build_and_publish:
     name: build, test and publish
     runs-on: ubuntu-latest
-
+    permissions:
+      packages: write
     steps:
     - uses: actions/checkout@v3
     - uses: ruby/setup-ruby@v1
@@ -54,7 +55,7 @@ jobs:
         done
     -
       name: publish curl-ssl image
-      uses: docker/build-push-action@v4.0.0
+      uses: docker/build-push-action@v4.2.1
       with:
         context: ${{env.IMAGE}}
         push: true
@@ -67,7 +68,7 @@ jobs:
         IMAGE: curl-ssl
     -
       name: publish git-ssh image
-      uses: docker/build-push-action@v4.0.0
+      uses: docker/build-push-action@v4.2.1
       with:
         context: ${{env.IMAGE}}
         push: true
@@ -80,7 +81,7 @@ jobs:
         IMAGE: git-ssh
     -
       name: publish cf-cli image
-      uses: docker/build-push-action@v4.0.0
+      uses: docker/build-push-action@v4.2.1
       with:
         context: ${{env.IMAGE}}
         push: true
@@ -93,7 +94,7 @@ jobs:
         IMAGE: cf-cli
     -
       name: publish k8s-tools image
-      uses: docker/build-push-action@v4.0.0
+      uses: docker/build-push-action@v4.2.1
       with:
         context: ${{env.IMAGE}}
         push: true
@@ -106,7 +107,7 @@ jobs:
         IMAGE: k8s-tools
     -
       name: publish bosh-cli-v2 image
-      uses: docker/build-push-action@v4.0.0
+      uses: docker/build-push-action@v4.2.1
       with:
         context: ${{env.IMAGE}}
         push: true
@@ -119,7 +120,7 @@ jobs:
         IMAGE: bosh-cli-v2
     -
       name: publish terraform image
-      uses: docker/build-push-action@v4.0.0
+      uses: docker/build-push-action@v4.2.1
       with:
         context: ${{env.IMAGE}}
         push: true
@@ -132,7 +133,7 @@ jobs:
         IMAGE: terraform
     -
       name: publish spruce image
-      uses: docker/build-push-action@v4.0.0
+      uses: docker/build-push-action@v4.2.1
       with:
         context: ${{env.IMAGE}}
         push: true
@@ -160,7 +161,7 @@ jobs:
         done
     -
       name: publish awscli image
-      uses: docker/build-push-action@v4.0.0
+      uses: docker/build-push-action@v4.2.1
       with:
         context: ${{env.IMAGE}}
         push: true
@@ -173,7 +174,7 @@ jobs:
         IMAGE: awscli
     -
       name: publish bosh-cli-v2-cf-cli image
-      uses: docker/build-push-action@v4.0.0
+      uses: docker/build-push-action@v4.2.1
       with:
         context: ${{env.IMAGE}}
         push: true
