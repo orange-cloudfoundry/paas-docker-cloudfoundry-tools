@@ -34,7 +34,7 @@ RUN wget -nv https://github.com/cloudfoundry/credhub-cli/releases/download/${CRE
   && mv credhub /usr/local/bin/credhub
 
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION 4.35.1
+ENV YQ_VERSION 4.35.2
 ENV YQ_SUM bd695a6513f1196aeda17b174a15e9c351843fb1cef5f9be0af170f2dd744f08
 ENV YQ_FILENAME yq_linux_amd64
 ENV YQ_REPO github.com/mikefarah/yq

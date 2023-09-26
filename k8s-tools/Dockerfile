@@ -13,7 +13,7 @@ RUN apt-get update \
 WORKDIR /usr/local/bin
 
 # renovate: datasource=github-releases depName=k14s/ytt
-ENV YTT_VERSION "0.45.4"
+ENV YTT_VERSION "0.46.0"
 ENV YTT_SUM 9bf62175c7cc0b54f9731a5b87ee40250f0457b1fce1b0b36019c2f8d96db8f8
 ENV YTT_FILENAME ytt-linux-amd64
 ADD https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/${YTT_FILENAME} .
@@ -41,7 +41,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${KUSTOMIZE_FILENAME})" \
     && tar zxvf ${KUSTOMIZE_FILENAME}
 
 # renovate: datasource=github-releases depName=k14s/kapp
-ENV KAPP_VERSION 0.58.0
+ENV KAPP_VERSION 0.59.0
 ENV KAPP_SUM b253ea9cf6add07f9497955147dc12e8612c24c36dc9929c9a4fecdc76752bd3
 ENV KAPP_FILENAME kapp-linux-amd64
 ADD https://github.com/k14s/kapp/releases/download/v${KAPP_VERSION}/kapp-linux-amd64 .
@@ -79,7 +79,7 @@ RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGI
     && ln -s kubectl-kuttl kuttl
 
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION 4.35.1
+ENV YQ_VERSION 4.35.2
 ENV YQ_SUM bd695a6513f1196aeda17b174a15e9c351843fb1cef5f9be0af170f2dd744f08
 ENV YQ_FILENAME yq_linux_amd64
 ADD https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} .
