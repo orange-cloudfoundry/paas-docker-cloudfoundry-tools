@@ -26,13 +26,13 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     -
       name: Login to DockerHub
-      uses: docker/login-action@v2
+      uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
     -
       name: Login to GitHub Container Registry
-      uses: docker/login-action@v2
+      uses: docker/login-action@v3
       with:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
@@ -195,7 +195,7 @@ jobs:
       - # Currently we cannot use `docker manifest` without authentication, it results in "unauthorized: access token has insufficient scopes"
         # Also, to save network bandwidth and reduce build time we avoid using `docker pull`
         name: Login to DockerHub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
