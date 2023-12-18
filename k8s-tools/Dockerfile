@@ -14,7 +14,7 @@ WORKDIR /usr/local/bin
 
 # renovate: datasource=github-releases depName=k14s/ytt
 ENV YTT_VERSION "0.46.3"
-ENV YTT_SUM 348cb34965b64c07fd5118e69efd9a4fae7e22f57db4e91e2d9903c1ad19f041
+ENV YTT_SUM 2b4ca5365c343bb1e903e8e845d9750b5d2776b3a99483912f27da6e95c480c0
 ENV YTT_FILENAME ytt-linux-amd64
 ADD https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/${YTT_FILENAME} .
 RUN echo "Computed sha256sum: $(sha256sum ${YTT_FILENAME})" \
@@ -42,7 +42,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${KUSTOMIZE_FILENAME})" \
 
 # renovate: datasource=github-releases depName=k14s/kapp
 ENV KAPP_VERSION 0.59.2
-ENV KAPP_SUM cc1cca783173badd5e74edc1f10decfcae85525cfece73b3d43acfda1eaccbe5
+ENV KAPP_SUM 6986369c06e89bcec366b2cc18f81634fcd95e2b52c6c6f7ee46b497ade25f7d
 ENV KAPP_FILENAME kapp-linux-amd64
 ADD https://github.com/k14s/kapp/releases/download/v${KAPP_VERSION}/kapp-linux-amd64 .
 RUN echo "Computed sha256sum: $(sha256sum ${KAPP_FILENAME})" \
@@ -80,7 +80,7 @@ RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGI
 
 # renovate: datasource=github-releases depName=mikefarah/yq
 ENV YQ_VERSION 4.40.5
-ENV YQ_SUM 8afd786b3b8ba8053409c5e7d154403e2d4ed4cf3e93c237462dc9ef75f38c8d
+ENV YQ_SUM 0d6aaf1cf44a8d18fbc7ed0ef14f735a8df8d2e314c4cc0f0242d35c0a440c95
 ENV YQ_FILENAME yq_linux_amd64
 ADD https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} .
 RUN echo "Computed ${YQ_FILENAME} sha256sum: $(sha256sum ${YQ_FILENAME})" \
