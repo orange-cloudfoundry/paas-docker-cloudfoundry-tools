@@ -25,7 +25,7 @@ RUN wget -nv https://s3.amazonaws.com/bosh-cli-artifacts/${BOSH_CLI_FILENAME} \
 # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
 ENV CREDHUB_CLI_VERSION 2.9.24
 ENV CREDHUB_CLI_SUM 026b07fe91d55e3d562e7cdbcabb92b0cd4712ef4017d632c7d3dd07559ee63e
-ENV CREDHUB_CLI_FILENAME credhub-linux-${CREDHUB_CLI_VERSION}.tgz
+ENV CREDHUB_CLI_FILENAME credhub-linux-amd64-${CREDHUB_CLI_VERSION}.tgz
 
 RUN wget -nv https://github.com/cloudfoundry/credhub-cli/releases/download/${CREDHUB_CLI_VERSION}/${CREDHUB_CLI_FILENAME} \
   && echo "${CREDHUB_CLI_SUM}  ${CREDHUB_CLI_FILENAME}" | sha256sum -c - \
