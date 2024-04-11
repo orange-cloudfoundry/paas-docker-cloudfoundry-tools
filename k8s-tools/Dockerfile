@@ -58,7 +58,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${KUBECTL_FILENAME})" \
     && echo "${KUBECTL_SUM}  ${KUBECTL_FILENAME}" | sha256sum -c -
 
 # renovate: datasource=github-releases depName=helm/helm
-ENV HELM_VERSION 3.12.0
+ENV HELM_VERSION 3.14.4
 ENV HELM_SUM da36e117d6dbc57c8ec5bab2283222fbd108db86c83389eebe045ad1ef3e2c3b
 ENV HELM_FILENAME helm-v${HELM_VERSION}-linux-amd64.tar.gz
 ADD https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz .
