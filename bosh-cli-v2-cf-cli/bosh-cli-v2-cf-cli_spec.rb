@@ -31,7 +31,7 @@ describe "bosh-cli-v2-cf-cli image" do
   it "has the expected version of the Bosh CLI (#{BOSH_CLI_VERSION})" do
     expect(
       command("bosh -v").stdout.strip
-    ).to match("version #{BOSH_CLI_VERSION}-")
+    ).to match("version #{BOSH_CLI_VERSION}$")
   end
 
   it "has the expected version of the CF CLI (#{CF_CLI_VERSION})" do

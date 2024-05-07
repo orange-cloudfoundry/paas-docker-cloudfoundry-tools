@@ -129,6 +129,6 @@ describe "k8s image" do
   it "has the expected version of the Bosh CLI" do
     expect(
       command("bosh -v").stdout.strip
-    ).to match("version #{BOSH_CLI_VERSION}-")
+    ).to match("version #{BOSH_CLI_VERSION}$")
   end
 end

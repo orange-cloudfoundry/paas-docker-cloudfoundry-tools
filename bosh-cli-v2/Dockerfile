@@ -2,7 +2,7 @@ FROM ruby:3.1-slim-bullseye
 
 # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 ENV BOSH_CLI_VERSION 7.5.6
-ENV BOSH_CLI_SUM 98705c704beedb08621db48ab2f4cad42704b85aba36cc99f3a9dc2738ebc226
+ENV BOSH_CLI_SUM 6fb9bb085c3afe7eff6e9a4e783731aeb4f03baf5ce1caf7ed229f29a97e60ac
 ENV BOSH_CLI_FILENAME bosh-cli-${BOSH_CLI_VERSION}-linux-amd64
 
 ENV DEBIAN_PACKAGES "ca-certificates wget git openssh-client file jq"
@@ -17,7 +17,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends ${BOSH_ENV_DEPS} \
   && rm -rf /var/lib/apt/lists/*
 
-RUN wget -nv https://s3.amazonaws.com/bosh-cli-artifacts/${BOSH_CLI_FILENAME} \
+RUN wget -nv https://github.com/cloudfoundry/bosh-cli/releases/download/v${BOSH_CLI_VERSION}/${BOSH_CLI_FILENAME} \
   && echo "${BOSH_CLI_SUM}  ${BOSH_CLI_FILENAME}" | sha256sum -c - \
   && chmod +x ${BOSH_CLI_FILENAME} \
   && mv ${BOSH_CLI_FILENAME} /usr/local/bin/bosh
