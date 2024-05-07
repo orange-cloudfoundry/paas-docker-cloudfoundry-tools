@@ -2,9 +2,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
-    "config:base",
-    ":disableRateLimiting",
-    ":rebaseStalePrs"
+    'config:best-practices', //See https://docs.renovatebot.com/upgrade-best-practices/#use-the-configbest-practices-preset
+    ':disableRateLimiting'
   ],
   "github-actions": {
     // We use dependa-bot for this
@@ -16,9 +15,6 @@
   },
   baseBranches: [
     "main"
-  ],
-  repositories: [
-
   ],
   ignorePaths: [
     "terraform/**",
@@ -54,8 +50,14 @@
       ]
     },
     {
-      matchPackagePatterns: [".*"],
-      addLabels: ["{{datasource}}","{{depName}}"]
+      description: "Add common labels",
+      matchDepPatterns: ["*"],
+      addLabels: [
+        // See full list of fields available at https://docs.renovatebot.com/templates/#other-available-fields
+        "datasource/{{datasource}}",
+        "depName/{{depNameSanitized}}",
+        "manager/{{manager}}"
+      ]
     },
     {
       description: "Ruby: update spec files",
@@ -65,7 +67,7 @@
     {
       // opt in for a PR for each K8S minor bump, e.G. 1.20.x to 1.21.y
       matchDepNames: "kubernetes/kubectl",
-      separateMinorPatch: "true"
+      separateMultipleMinor: true
     },
     {
       // Add checksums extraction tip to yq packaqe
@@ -82,15 +84,6 @@
       description: "Group k8s related clis bump unless it is a major version",
       groupName: "K8s related bumps",
       matchUpdateTypes: ["patch", "minor"]
-
-    },
-    {
-      matchDepNames: [
-        "kubernetes/kubectl"
-      ],
-      description: "Group k8s related clis bump unless it is a major version",
-      groupName: "K8s related bumps",
-      matchUpdateTypes: ["patch"]
     },
     {
       matchDepNames: [
@@ -106,8 +99,9 @@
     "after 1pm on Monday",
     "before 4pm on Monday",
   ],
-  regexManagers: [
+  customManagers: [
     {
+      customType: "regex",
       fileMatch: [".*/.*_spec\\.rb"], //https://regex101.com/r/rIOdcZ/1
       matchStrings: [
         // https://docs.renovatebot.com/modules/manager/regex/#regular-expression-capture-groups
@@ -119,6 +113,7 @@
       datasourceTemplate: "docker"
     },
     {
+      customType: "regex",
       fileMatch: [".*/Dockerfile$", ".*/.*_spec\\.rb"],
       "matchStrings": [
         // For dockerfile: https://regex101.com/r/QUjPL3/3
@@ -134,6 +129,7 @@
       extractVersionTemplate: "^(kubernetes-)?v?(?<version>.*)$"
     },
     {
+      customType: "regex",
       fileMatch: [".*/Dockerfile$", ".*/.*_spec\\.rb"],
       "matchStrings": [
         // For dockerfile: https://regex101.com/r/QUjPL3/3
