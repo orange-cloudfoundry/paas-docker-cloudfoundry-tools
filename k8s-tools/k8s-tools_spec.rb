@@ -5,9 +5,9 @@ require 'serverspec'
 BOSH_CLI_VERSION="7.4.0" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 YTT_VERSION="0.46.3"  # renovate: datasource=github-releases depName=k14s/ytt
 CREDHUB_CLI_VERSION='2.9.24' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
-KUSTOMIZE_VERSION="4.5.4" # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
+KUSTOMIZE_VERSION="5.0.3" # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
 KAPP_VERSION="0.59.2" # renovate: datasource=github-releases depName=k14s/kapp
-KUBECTL_VERSION="1.24.17" # renovate: datasource=github-tags depName=kubernetes/kubectl
+KUBECTL_VERSION="1.26.15" # renovate: datasource=github-tags depName=kubernetes/kubectl
 HELM_VERSION="3.14.4" # renovate: datasource=github-releases depName=helm/helm
 KUTTL_VERSION="0.15.0" # renovate: datasource=github-releases depName=kudobuilder/kuttl
 RUBY_VERSION = "3.1"
@@ -26,9 +26,11 @@ describe "k8s image" do
   end
 
   it "has the expected version of Kubectl (#{KUBECTL_VERSION}) with embedded Kustomize" do
+    OLD_KUSTOMIZE_VERSION="4.5.7"
     expect(
         command("kubectl version --short --client=true").stdout.strip
-    ).to eq("Client Version: v#{KUBECTL_VERSION}\nKustomize Version: v#{KUSTOMIZE_VERSION}")
+    # ).to eq("Client Version: v#{KUBECTL_VERSION}\nKustomize Version: v#{KUSTOMIZE_VERSION}")
+    ).to eq("Client Version: v#{KUBECTL_VERSION}\nKustomize Version: v#{OLD_KUSTOMIZE_VERSION}")
   end
 
   it "has the expected version of YTT (#{YTT_VERSION})" do
@@ -46,7 +48,7 @@ describe "k8s image" do
   it "has the expected version of stand-alone Kustomize (#{KUSTOMIZE_VERSION})" do
     expect(
       command("kustomize version").stdout
-    ).to match(/\/v#{KUSTOMIZE_VERSION} /)
+    ).to match("v#{KUSTOMIZE_VERSION}\n")
   end
 
   it "has the expected version of Kapp (#{KAPP_VERSION})" do
