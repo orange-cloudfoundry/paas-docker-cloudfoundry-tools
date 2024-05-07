@@ -87,17 +87,17 @@
     },
     {
       matchDepNames: [
-        "cloudfoundry/credhub-cli",
-        "cloudfoundry/cli"
+        'cloudfoundry/credhub-cli',
+        'cloudfoundry/cli',
       ],
-      description: "Group cloudfoundry org clis patch bump",
-      groupName: "CF org bumps",
-      matchUpdateTypes: ["patch"]
+      description: 'Group cloudfoundry org clis patch bump',
+      groupName: 'CF org bumps',
+      matchUpdateTypes: ['patch']
     }
   ],
   schedule: [
-    "after 1pm on Monday",
-    "before 4pm on Monday",
+    'after 1pm on Monday',
+    'before 4pm on Monday',
   ],
   customManagers: [
     {
@@ -109,12 +109,12 @@
         // you should be aware when using the ^ and/or $ regex assertions.
         "\\s*RUBY_VERSION\\s*=\\s*\"(?<currentValue>[a-z0-9\\.\\/\\-\\+]*)\".*" // https://regex101.com/r/hTyRlz/1
       ],
-      depNameTemplate: "ruby",
-      datasourceTemplate: "docker"
+      depNameTemplate: 'ruby',
+      datasourceTemplate: 'docker'
     },
     {
       customType: 'regex',
-      fileMatch: [".*/Dockerfile$", ".*/.*_spec\\.rb"],
+      fileMatch: ['.*/Dockerfile$', ".*/.*_spec\\.rb"],
       matchStrings: [
         // For dockerfile: https://regex101.com/r/QUjPL3/3
         "datasource=(?<datasource>github-tags) depName=(?<depName>kubernetes\/kubectl)\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*",
@@ -126,11 +126,11 @@
       // Workaround for https://github.com/renovatebot/renovate/issues/6576#issuecomment-1233357263 New feature: separateMultiplePatch and separateMultipleMinor
       //#6576
 //      versioningTemplate: "regex:^(\\d+\\.)?(?<major>\\d+)\\.(?<minor>\\d+)?$",
-      extractVersionTemplate: "^(kubernetes-)?v?(?<version>.*)$"
+      extractVersionTemplate: '^(kubernetes-)?v?(?<version>.*)$'
     },
     {
       customType: 'regex',
-      fileMatch: [".*/Dockerfile$", ".*/.*_spec\\.rb"],
+      fileMatch: ['.*/Dockerfile$', ".*/.*_spec\\.rb"],
       matchStrings: [
         // For dockerfile: https://regex101.com/r/QUjPL3/3
         'datasource=(?<datasource>github-releases) depName=(?<depName>[\\w\\d\\//\\-\\_]+)\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*',
