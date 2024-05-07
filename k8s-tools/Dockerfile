@@ -32,7 +32,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${CREDHUB_CLI_FILENAME})" \
 
 # We need to synchronize this kustomize version with embedded fluxcd version and kubectl embedded version !
 # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
-ENV KUSTOMIZE_VERSION 4.5.4
+ENV KUSTOMIZE_VERSION kustomize/v4.5.7
 ENV KUSTOMIZE_SUM 1159c5c17c964257123b10e7d8864e9fe7f9a580d4124a388e746e4003added3
 ENV KUSTOMIZE_FILENAME kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz
 ADD https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz .
