@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'docker'
 require 'serverspec'
 
-BOSH_CLI_VERSION="7.4.0" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
+BOSH_CLI_VERSION="7.5.6" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 CF_CLI_VERSION="8.7.6" # renovate: datasource=github-releases depName=cloudfoundry/cli
 SPRUCE_BIN = "/usr/local/bin/spruce"
 SPRUCE_VERSION = "1.31.0" # renovate: datasource=github-releases depName=geofffranks/spruce
@@ -31,7 +31,7 @@ describe "bosh-cli-v2-cf-cli image" do
   it "has the expected version of the Bosh CLI (#{BOSH_CLI_VERSION})" do
     expect(
       command("bosh -v").stdout.strip
-    ).to match("version #{BOSH_CLI_VERSION}-")
+    ).to match("version #{BOSH_CLI_VERSION}$")
   end
 
   it "has the expected version of the CF CLI (#{CF_CLI_VERSION})" do

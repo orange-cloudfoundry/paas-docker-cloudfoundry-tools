@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'docker'
 require 'serverspec'
 
-BOSH_CLI_VERSION="7.4.0" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
+BOSH_CLI_VERSION="7.5.6" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 CREDHUB_CLI_VERSION='2.9.24' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
 RUBY_VERSION = "3.1"
 
@@ -23,7 +23,7 @@ describe "bosh-cli-v2 image" do
   it "has the expected version of the Bosh CLI (#{BOSH_CLI_VERSION})" do
     expect(
       command("bosh -v").stdout.strip
-    ).to match("version #{BOSH_CLI_VERSION}-")
+    ).to match("version #{BOSH_CLI_VERSION}$")
   end
 
   it "has `file` available" do

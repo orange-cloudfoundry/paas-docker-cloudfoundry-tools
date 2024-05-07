@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'docker'
 require 'serverspec'
 
-BOSH_CLI_VERSION="7.4.0" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
+BOSH_CLI_VERSION="7.5.6" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 YTT_VERSION="0.49.0"  # renovate: datasource=github-releases depName=k14s/ytt
 CREDHUB_CLI_VERSION='2.9.24' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
 KUSTOMIZE_VERSION="5.0.3" # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
@@ -129,6 +129,6 @@ describe "k8s image" do
   it "has the expected version of the Bosh CLI" do
     expect(
       command("bosh -v").stdout.strip
-    ).to match("version #{BOSH_CLI_VERSION}-")
+    ).to match("version #{BOSH_CLI_VERSION}$")
   end
 end
