@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'docker'
 require 'serverspec'
 
-BOSH_CLI_VERSION="7.4.0" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
+BOSH_CLI_VERSION="7.5.6" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 CF_CLI_VERSION="8.7.6" # renovate: datasource=github-releases depName=cloudfoundry/cli
 SPRUCE_BIN = "/usr/local/bin/spruce"
 SPRUCE_VERSION = "1.31.0" # renovate: datasource=github-releases depName=geofffranks/spruce
