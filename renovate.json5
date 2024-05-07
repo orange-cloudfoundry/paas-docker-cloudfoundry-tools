@@ -1,85 +1,85 @@
 // Note: we use JSON5 to be able to use comments
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   extends: [
     'config:best-practices', //See https://docs.renovatebot.com/upgrade-best-practices/#use-the-configbest-practices-preset
     ':disableRateLimiting'
   ],
-  "github-actions": {
+  'github-actions': {
     // We use dependa-bot for this
-    enabled: false
+    enabled: false,
   },
   bundler: {
     // We use dependa-bot for this
-    enabled: false
+    enabled: false,
   },
   baseBranches: [
     "main"
   ],
   ignorePaths: [
-    "terraform/**",
-    "certstrap/**",
-    "cf-acceptance-tests/**",
-    "cf-uaac/**",
-    "concourse-keyval-resource/**",
-    "concourse-pool-resource/**",
-    "fast-startup-and-shutdown/**",
-    "golang/**",
-    "json-minify/**",
-    "keyval-resource/**",
-    "middleman/**",
-    "node/**",
-    "node-chromium/**",
-    "olhtbr-metadata-resource/**",
-    "paas-prometheus-exporter/**",
-    "psql/**",
-    "ruby/**",
-    "ruby-base/**",
-    "self-update-pipelines/**",
-    "spec/**",
-    "ubuntu/**"
+    'terraform/**',
+    'certstrap/**',
+    'cf-acceptance-tests/**',
+    'cf-uaac/**',
+    'concourse-keyval-resource/**',
+    'concourse-pool-resource/**',
+    'fast-startup-and-shutdown/**',
+    'golang/**',
+    'json-minify/**',
+    'keyval-resource/**',
+    'middleman/**',
+    'node/**',
+    'node-chromium/**',
+    'olhtbr-metadata-resource/**',
+    'paas-prometheus-exporter/**',
+    'psql/**',
+    'ruby/**',
+    'ruby-base/**',
+    'self-update-pipelines/**',
+    'spec/**',
+    'ubuntu/**',
   ],
   packageRules: [
     {
-      description: "@o-orand assignments",
+      description: '@o-orand assignments',
       matchPackagePatterns: [
-        "*"
+        '*',
       ],
       assignees: [
-        "o-orand"
-      ]
+        'o-orand',
+      ],
     },
     {
       description: "Add common labels",
       matchDepPatterns: ["*"],
       addLabels: [
         // See full list of fields available at https://docs.renovatebot.com/templates/#other-available-fields
-        "datasource/{{datasource}}",
-        "depName/{{depNameSanitized}}",
-        "manager/{{manager}}"
-      ]
+        'datasource/{{datasource}}',
+        'depName/{{depNameSanitized}}',
+        'manager/{{manager}}',
+      ],
     },
     {
-      description: "Ruby: update spec files",
-      matchDepNames: "ruby",
-      matchFiles: ["**/*_spec\\.rb"]
+      description: 'Ruby: update spec files',
+      matchDepNames: 'ruby',
+      matchFiles: ['**/*_spec\\.rb']
     },
     {
       // opt in for a PR for each K8S minor bump, e.G. 1.20.x to 1.21.y
-      matchDepNames: "kubernetes/kubectl",
-      separateMultipleMinor: true
+      matchDepNames: 'kubernetes/kubectl',
+      separateMultipleMinor: true,
     },
     {
       // Add checksums extraction tip to yq packaqe
-      matchDepNames: "mikefarah/yq",
-      prBodyNotes: ["To easily extract checksums: curl -sSL https://github.com/mikefarah/yq/releases/download/v{{version}}/checksums |grep \"yq_linux_amd64 \"|cut -d' ' -f37"]
+      matchDepNames: 'mikefarah/yq',
+      prBodyNotes: ['To easily extract checksums: curl -sSL https://github.com/mikefarah/yq/releases/download/v{{version}}/checksums |grep "yq_linux_amd64 "|cut -d\' \' -f37'],
     },
     {
       matchDepNames: [
-        "mikefarah/yq",
-        "k14s/ytt",
-        "k14s/kapp",
-        "kudobuilder/kuttl"
+        'mikefarah/yq',
+        'k14s/ytt',
+        'k14s/kapp',
+        'kudobuilder/kuttl',
       ],
       description: "Group k8s related clis bump unless it is a major version",
       groupName: "K8s related bumps",
@@ -101,8 +101,8 @@
   ],
   customManagers: [
     {
-      customType: "regex",
-      fileMatch: [".*/.*_spec\\.rb"], //https://regex101.com/r/rIOdcZ/1
+      customType: 'regex',
+      fileMatch: ['.*/.*_spec\\.rb'], //https://regex101.com/r/rIOdcZ/1
       matchStrings: [
         // https://docs.renovatebot.com/modules/manager/regex/#regular-expression-capture-groups
         // The regex manager matches are done per-file and not per-line,
@@ -113,9 +113,9 @@
       datasourceTemplate: "docker"
     },
     {
-      customType: "regex",
+      customType: 'regex',
       fileMatch: [".*/Dockerfile$", ".*/.*_spec\\.rb"],
-      "matchStrings": [
+      matchStrings: [
         // For dockerfile: https://regex101.com/r/QUjPL3/3
         "datasource=(?<datasource>github-tags) depName=(?<depName>kubernetes\/kubectl)\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*",
         // For spec files: https://regex101.com/r/ifWHDK/2
@@ -129,19 +129,19 @@
       extractVersionTemplate: "^(kubernetes-)?v?(?<version>.*)$"
     },
     {
-      customType: "regex",
+      customType: 'regex',
       fileMatch: [".*/Dockerfile$", ".*/.*_spec\\.rb"],
-      "matchStrings": [
+      matchStrings: [
         // For dockerfile: https://regex101.com/r/QUjPL3/3
-        "datasource=(?<datasource>github-releases) depName=(?<depName>[\\w\\d\\//\\-\\_]+)\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*",
+        'datasource=(?<datasource>github-releases) depName=(?<depName>[\\w\\d\\//\\-\\_]+)\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*',
         // For spec files: https://regex101.com/r/ifWHDK/2
         ".+_VERSION\\s*=\\s*[\\\"\\']?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?[\\\"\\']?\\s* #\\s*renovate: datasource=(?<datasource>github-releases) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versioning=(?<versioning>.+))?\\s*"
       ],
       // datasourceTemplate: "{{datasource}}", // should not be required as we extract datasource
-      versioningTemplate: "regex:(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)?$",
-      extractVersionTemplate: "^v?(?<version>.*)$"
-    }
-  ]
+      versioningTemplate: 'regex:(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)?$',
+      extractVersionTemplate: '^v?(?<version>.*)$',
+    },
+  ],
 }
 
 
