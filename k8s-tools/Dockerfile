@@ -89,7 +89,7 @@ RUN echo "Computed ${YQ_FILENAME} sha256sum: $(sha256sum ${YQ_FILENAME})" \
     && mv ${YQ_FILENAME} /usr/local/bin/yq
 
 # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
-ENV BOSH_CLI_VERSION 7.5.6
+ENV BOSH_CLI_VERSION 7.6.1
 ENV BOSH_CLI_SUM 6fb9bb085c3afe7eff6e9a4e783731aeb4f03baf5ce1caf7ed229f29a97e60ac
 ENV BOSH_CLI_FILENAME bosh-cli-${BOSH_CLI_VERSION}-linux-amd64
 ADD https://github.com/cloudfoundry/bosh-cli/releases/download/v${BOSH_CLI_VERSION}/${BOSH_CLI_FILENAME} .
