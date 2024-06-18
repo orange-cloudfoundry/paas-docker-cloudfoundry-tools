@@ -62,7 +62,7 @@
     {
       description: 'Ruby: update spec files',
       matchDepNames: 'ruby',
-      matchFiles: ['**/*_spec\\.rb']
+      matchFileNames: ['**/*_spec\\.rb']
     },
     {
       // opt in for a PR for each K8S minor bump, e.G. 1.20.x to 1.21.y
