@@ -72,7 +72,7 @@
     {
       // Add checksums extraction tip to yq packaqe
       matchDepNames: 'mikefarah/yq',
-      prBodyNotes: ['To easily extract checksums: curl -sSL https://github.com/mikefarah/yq/releases/download/v{{version}}/checksums |grep "yq_linux_amd64 "|cut -d\' \' -f37'],
+      prBodyNotes: ['To easily extract checksums: yq_version=;curl -sSL https://github.com/mikefarah/yq/releases/download/v${jq_version}/checksums |grep "yq_linux_amd64 "|cut -d\' \' -f37'],
     },
     {
       matchDepNames: [

@@ -13,8 +13,8 @@ RUN apt-get update \
 WORKDIR /usr/local/bin
 
 # renovate: datasource=github-releases depName=k14s/ytt
-ENV YTT_VERSION "0.49.0"
-ENV YTT_SUM 357ec754446b1eda29dd529e088f617e85809726c686598ab03cfc1c79f43b56
+ENV YTT_VERSION "0.49.1"
+ENV YTT_SUM 20a2f7466157a9c6189e885d0027e17c48776e65627f30fe04bffeef1d6f6166
 ENV YTT_FILENAME ytt-linux-amd64
 ADD https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/${YTT_FILENAME} .
 RUN echo "Computed sha256sum: $(sha256sum ${YTT_FILENAME})" \
@@ -41,8 +41,8 @@ RUN echo "Computed sha256sum: $(sha256sum ${KUSTOMIZE_FILENAME})" \
     && tar zxvf ${KUSTOMIZE_FILENAME}
 
 # renovate: datasource=github-releases depName=k14s/kapp
-ENV KAPP_VERSION 0.62.0
-ENV KAPP_SUM 6eb24733364213967c434ca77a7b3516f80c962e1da1ba57ce4c495556cf1585
+ENV KAPP_VERSION 0.62.1
+ENV KAPP_SUM b686bd63e5f751496d8221c7cf3df308663b6b21e1c480dd4a4cd301f6a8d651
 ENV KAPP_FILENAME kapp-linux-amd64
 ADD https://github.com/k14s/kapp/releases/download/v${KAPP_VERSION}/kapp-linux-amd64 .
 RUN echo "Computed sha256sum: $(sha256sum ${KAPP_FILENAME})" \
@@ -69,8 +69,8 @@ RUN echo "Computed sha256sum: $(sha256sum ${HELM_FILENAME})" \
     && rm -rf linux-amd64
 
 # renovate: datasource=github-releases depName=kudobuilder/kuttl
-ENV KUTTL_VERSION 0.16.0
-ENV KUTTL_PLUGIN_SUM 2ff268ccacee48154f4e521d313c625b6105c916ae6a6c7a9041b20bb2b4b6b5
+ENV KUTTL_VERSION 0.17.0
+ENV KUTTL_PLUGIN_SUM 87873690e1fc8e3cc9400801b3196269803a3bd75e589420f08e4ed65333415c
 ENV KUTTL_PLUGIN_FILENAME kubectl-kuttl_${KUTTL_VERSION}_linux_x86_64
 ADD https://github.com/kudobuilder/kuttl/releases/download/v${KUTTL_VERSION}/${KUTTL_PLUGIN_FILENAME} .
 RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGIN_FILENAME})" \
@@ -79,8 +79,8 @@ RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGI
     && ln -s kubectl-kuttl kuttl
 
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION 4.43.1
-ENV YQ_SUM cfbbb9ba72c9402ef4ab9d8f843439693dfb380927921740e51706d90869c7e1
+ENV YQ_VERSION 4.44.2
+ENV YQ_SUM 246b781828353a59fb04ffaada241f78a8f3f25c623047b40306def1f6806e71
 ENV YQ_FILENAME yq_linux_amd64
 ADD https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} .
 RUN echo "Computed ${YQ_FILENAME} sha256sum: $(sha256sum ${YQ_FILENAME})" \
