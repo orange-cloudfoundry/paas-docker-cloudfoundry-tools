@@ -3,7 +3,7 @@ FROM elpaasoci/curl-ssl
 ENV AWSCLI_VERSION "1.19.112"
 
 RUN apk add --no-cache \
-        groff~1.22.4-r4 \
+        groff~1.23 \
         less>=590-r0 \
         python3~3.11 \
         py3-pip~23 \
