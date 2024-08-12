@@ -4,7 +4,7 @@ require 'serverspec'
 
 CF_CLI_VERSION="8.7.10" # renovate: datasource=github-releases depName=cloudfoundry/cli
 SPRUCE_BIN = "/usr/local/bin/spruce"
-SPRUCE_VERSION = "1.31.0" # renovate: datasource=github-releases depName=geofffranks/spruce
+SPRUCE_VERSION = "1.31.1" # renovate: datasource=github-releases depName=geofffranks/spruce
 RUBY_VERSION = "3.1"
 
 describe "cf-cli image" do
