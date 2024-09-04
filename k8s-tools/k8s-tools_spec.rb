@@ -26,11 +26,11 @@ describe "k8s image" do
   end
 
   it "has the expected version of Kubectl (#{KUBECTL_VERSION}) with embedded Kustomize" do
-    OLD_KUSTOMIZE_VERSION="4.5.7"
+    EMBEDDED_KUSTOMIZE_VERSION="5.0.4-0.20230601165947-6ce0bf390ce3"
     expect(
-        command("kubectl version --short --client=true").stdout.strip
+        command("kubectl version --client=true").stdout.strip
     # ).to eq("Client Version: v#{KUBECTL_VERSION}\nKustomize Version: v#{KUSTOMIZE_VERSION}")
-    ).to eq("Client Version: v#{KUBECTL_VERSION}\nKustomize Version: v#{OLD_KUSTOMIZE_VERSION}")
+    ).to eq("Client Version: v#{KUBECTL_VERSION}\nKustomize Version: v#{EMBEDDED_KUSTOMIZE_VERSION}")
   end
 
   it "has the expected version of YTT (#{YTT_VERSION})" do
