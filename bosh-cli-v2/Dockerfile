@@ -1,4 +1,4 @@
-FROM ruby:3.1-slim-bullseye
+FROM ruby:3.3-slim-bullseye@sha256:de08b332b16a68939ee8cf271e0b063ccd66b860486b7f3dc15df5803d6a8d4e
 
 # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 ENV BOSH_CLI_VERSION 7.7.1
