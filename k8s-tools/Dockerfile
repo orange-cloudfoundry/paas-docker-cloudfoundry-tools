@@ -14,7 +14,7 @@ WORKDIR /usr/local/bin
 
 # renovate: datasource=github-releases depName=k14s/ytt
 ENV YTT_VERSION "0.50.0"
-ENV YTT_SUM 20a2f7466157a9c6189e885d0027e17c48776e65627f30fe04bffeef1d6f6166
+ENV YTT_SUM 61dec6e00131f990db853afc4b7531c318bd3af3ba18f2cfdbc0d5e83a45c445
 ENV YTT_FILENAME ytt-linux-amd64
 ADD https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/${YTT_FILENAME} .
 RUN echo "Computed sha256sum: $(sha256sum ${YTT_FILENAME})" \
@@ -42,7 +42,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${KUSTOMIZE_FILENAME})" \
 
 # renovate: datasource=github-releases depName=k14s/kapp
 ENV KAPP_VERSION 0.63.3
-ENV KAPP_SUM b686bd63e5f751496d8221c7cf3df308663b6b21e1c480dd4a4cd301f6a8d651
+ENV KAPP_SUM 33702a40b6032ada742d73c59afeb393d0830a1913e3a599ca995eba3e68a57e
 ENV KAPP_FILENAME kapp-linux-amd64
 ADD https://github.com/k14s/kapp/releases/download/v${KAPP_VERSION}/kapp-linux-amd64 .
 RUN echo "Computed sha256sum: $(sha256sum ${KAPP_FILENAME})" \
@@ -70,7 +70,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${HELM_FILENAME})" \
 
 # renovate: datasource=github-releases depName=kudobuilder/kuttl
 ENV KUTTL_VERSION 0.19.0
-ENV KUTTL_PLUGIN_SUM 87873690e1fc8e3cc9400801b3196269803a3bd75e589420f08e4ed65333415c
+ENV KUTTL_PLUGIN_SUM 376162ead2a1681505c3a449c3f02f3b2e6c8f604963c5a729cf7be532b1ae29
 ENV KUTTL_PLUGIN_FILENAME kubectl-kuttl_${KUTTL_VERSION}_linux_x86_64
 ADD https://github.com/kudobuilder/kuttl/releases/download/v${KUTTL_VERSION}/${KUTTL_PLUGIN_FILENAME} .
 RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGIN_FILENAME})" \
@@ -80,7 +80,7 @@ RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGI
 
 # renovate: datasource=github-releases depName=mikefarah/yq
 ENV YQ_VERSION 4.44.3
-ENV YQ_SUM 246b781828353a59fb04ffaada241f78a8f3f25c623047b40306def1f6806e71
+ENV YQ_SUM a2c097180dd884a8d50c956ee16a9cec070f30a7947cf4ebf87d5f36213e9ed7
 ENV YQ_FILENAME yq_linux_amd64
 ADD https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} .
 RUN echo "Computed ${YQ_FILENAME} sha256sum: $(sha256sum ${YQ_FILENAME})" \
