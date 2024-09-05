@@ -1,9 +1,8 @@
-// Note: we use JSON5 to be able to use comments
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   extends: [
     'config:best-practices', //See https://docs.renovatebot.com/upgrade-best-practices/#use-the-configbest-practices-preset
-    ':disableRateLimiting'
+    ':disableRateLimiting',
   ],
   'github-actions': {
     // We use dependa-bot for this
@@ -14,7 +13,7 @@
     enabled: false,
   },
   baseBranches: [
-    "main"
+    'main',
   ],
   ignorePaths: [
     'terraform/**',
@@ -42,27 +41,31 @@
   packageRules: [
     {
       description: '@o-orand assignments',
-      matchPackagePatterns: [
-        '*',
-      ],
       assignees: [
         'o-orand',
       ],
+      matchPackageNames: [
+        '*',
+      ],
     },
     {
-      description: "Add common labels",
-      matchDepPatterns: ["*"],
+      description: 'Add common labels',
       addLabels: [
         // See full list of fields available at https://docs.renovatebot.com/templates/#other-available-fields
         'datasource/{{datasource}}',
         'depName/{{depNameSanitized}}',
         'manager/{{manager}}',
       ],
+      matchDepNames: [
+        '*',
+      ],
     },
     {
       description: 'Ruby: update spec files',
       matchDepNames: 'ruby',
-      matchFileNames: ['**/*_spec\\.rb']
+      matchFileNames: [
+        '**/*_spec\\.rb',
+      ],
     },
     {
       // opt in for a PR for each K8S minor bump, e.G. 1.20.x to 1.21.y
@@ -72,7 +75,9 @@
     {
       // Add checksums extraction tip to yq packaqe
       matchDepNames: 'mikefarah/yq',
-      prBodyNotes: ['To easily extract checksums: yq_version=;curl -sSL https://github.com/mikefarah/yq/releases/download/v${jq_version}/checksums |grep "yq_linux_amd64 "|cut -d\' \' -f37'],
+      prBodyNotes: [
+        'To easily extract checksums: yq_version=;curl -sSL https://github.com/mikefarah/yq/releases/download/v${jq_version}/checksums |grep "yq_linux_amd64 "|cut -d\' \' -f37',
+      ],
     },
     {
       matchDepNames: [
@@ -81,9 +86,12 @@
         'k14s/kapp',
         'kudobuilder/kuttl',
       ],
-      description: "Group k8s related clis bump unless it is a major version",
-      groupName: "K8s related bumps",
-      matchUpdateTypes: ["patch", "minor"]
+      description: 'Group k8s related clis bump unless it is a major version',
+      groupName: 'K8s related bumps',
+      matchUpdateTypes: [
+        'patch',
+        'minor',
+      ],
     },
     {
       matchDepNames: [
@@ -92,8 +100,10 @@
       ],
       description: 'Group cloudfoundry org clis patch bump',
       groupName: 'CF org bumps',
-      matchUpdateTypes: ['patch']
-    }
+      matchUpdateTypes: [
+        'patch',
+      ],
+    },
   ],
   schedule: [
     'after 1pm on Monday',
@@ -107,35 +117,40 @@
         // https://docs.renovatebot.com/modules/manager/regex/#regular-expression-capture-groups
         // The regex manager matches are done per-file and not per-line,
         // you should be aware when using the ^ and/or $ regex assertions.
-        "\\s*RUBY_VERSION\\s*=\\s*\"(?<currentValue>[a-z0-9\\.\\/\\-\\+]*)\".*" // https://regex101.com/r/hTyRlz/1
+        '\\s*RUBY_VERSION\\s*=\\s*"(?<currentValue>[a-z0-9\\.\\/\\-\\+]*)".*', // https://regex101.com/r/hTyRlz/1
       ],
       depNameTemplate: 'ruby',
-      datasourceTemplate: 'docker'
+      datasourceTemplate: 'docker',
     },
     {
       customType: 'regex',
-      fileMatch: ['.*/Dockerfile$', ".*/.*_spec\\.rb"],
+      fileMatch: [
+        '.*/Dockerfile$',
+        '.*/.*_spec\\.rb',
+      ],
       matchStrings: [
         // For dockerfile: https://regex101.com/r/QUjPL3/3
-        "datasource=(?<datasource>github-tags) depName=(?<depName>kubernetes\/kubectl)\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*",
+        'datasource=(?<datasource>github-tags) depName=(?<depName>kubernetes/kubectl)\\nENV .+_VERSION ?\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\"?\\s*',
         // For spec files: https://regex101.com/r/ifWHDK/2
-
-        ".+_VERSION\\s*=\\s*[\\\"\\']?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?[\\\"\\']?\\s* #\\s*renovate: datasource=(?<datasource>github-tags) depName=(?<depName>kubernetes/kubectl)( versioning=(?<versioning>.+))?\\s*"
+        '.+_VERSION\\s*=\\s*[\\"\\\']?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?[\\"\\\']?\\s* #\\s*renovate: datasource=(?<datasource>github-tags) depName=(?<depName>kubernetes/kubectl)( versioning=(?<versioning>.+))?\\s*',
       ],
       //versioningTemplate: "regex:(?<major>\\d+\\.\\d+)\\.(?<minor>\\d+)?$", => we cannot use this as renovate detect 1 instead of 1.24 as major
       // Workaround for https://github.com/renovatebot/renovate/issues/6576#issuecomment-1233357263 New feature: separateMultiplePatch and separateMultipleMinor
       //#6576
-//      versioningTemplate: "regex:^(\\d+\\.)?(?<major>\\d+)\\.(?<minor>\\d+)?$",
-      extractVersionTemplate: '^(kubernetes-)?v?(?<version>.*)$'
+      //      versioningTemplate: "regex:^(\\d+\\.)?(?<major>\\d+)\\.(?<minor>\\d+)?$",
+      extractVersionTemplate: '^(kubernetes-)?v?(?<version>.*)$',
     },
     {
       customType: 'regex',
-      fileMatch: ['.*/Dockerfile$', ".*/.*_spec\\.rb"],
+      fileMatch: [
+        '.*/Dockerfile$',
+        '.*/.*_spec\\.rb',
+      ],
       matchStrings: [
         // For dockerfile: https://regex101.com/r/QUjPL3/3
-        'datasource=(?<datasource>github-releases) depName=(?<depName>[\\w\\d\\//\\-\\_]+)\\nENV .+_VERSION ?\\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\\"?\\s*',
+        'datasource=(?<datasource>github-releases) depName=(?<depName>[\\w\\d\\//\\-\\_]+)\\nENV .+_VERSION ?\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\"?\\s*',
         // For spec files: https://regex101.com/r/ifWHDK/2
-        ".+_VERSION\\s*=\\s*[\\\"\\']?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?[\\\"\\']?\\s* #\\s*renovate: datasource=(?<datasource>github-releases) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versioning=(?<versioning>.+))?\\s*"
+        '.+_VERSION\\s*=\\s*[\\"\\\']?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?[\\"\\\']?\\s* #\\s*renovate: datasource=(?<datasource>github-releases) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versioning=(?<versioning>.+))?\\s*',
       ],
       // datasourceTemplate: "{{datasource}}", // should not be required as we extract datasource
       versioningTemplate: 'regex:(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)?$',
@@ -143,6 +158,3 @@
     },
   ],
 }
-
-
-
