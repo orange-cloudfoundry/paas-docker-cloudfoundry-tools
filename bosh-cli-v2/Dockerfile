@@ -2,7 +2,7 @@ FROM ruby:3.1-slim-bullseye
 
 # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 ENV BOSH_CLI_VERSION 7.7.1
-ENV BOSH_CLI_SUM 39c6e447068fdf8b86d5519f3b3c922822b5c13ec1b58397938775288f7a10b6
+ENV BOSH_CLI_SUM ec3b3c08ceed19c812bd048d3c22831e0a50983a27bd334498b361c7d604246d
 ENV BOSH_CLI_FILENAME bosh-cli-${BOSH_CLI_VERSION}-linux-amd64
 
 ENV DEBIAN_PACKAGES "ca-certificates wget git openssh-client file jq"
