@@ -70,7 +70,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${HELM_FILENAME})" \
     && rm -rf linux-amd64
 
 # renovate: datasource=github-releases depName=kudobuilder/kuttl
-ENV KUTTL_VERSION 0.19.0
+ENV KUTTL_VERSION 0.20.0
 ENV KUTTL_PLUGIN_SUM 376162ead2a1681505c3a449c3f02f3b2e6c8f604963c5a729cf7be532b1ae29
 ENV KUTTL_PLUGIN_FILENAME kubectl-kuttl_${KUTTL_VERSION}_linux_x86_64
 ADD https://github.com/kudobuilder/kuttl/releases/download/v${KUTTL_VERSION}/${KUTTL_PLUGIN_FILENAME} .
@@ -80,7 +80,7 @@ RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGI
     && ln -s kubectl-kuttl kuttl
 
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION 4.44.5
+ENV YQ_VERSION 4.44.6
 ENV YQ_SUM 638c4b251c49201fc94b598834b715f8f1c6e9b1854d2820772d2c79f0289002
 ENV YQ_FILENAME yq_linux_amd64
 ADD https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} .
