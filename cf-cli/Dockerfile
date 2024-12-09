@@ -2,7 +2,7 @@ FROM ruby:3.1-alpine3.18
 
 ENV PACKAGES "unzip curl openssl ca-certificates git libc6-compat bash jq gettext make"
 # renovate: datasource=github-releases depName=cloudfoundry/cli
-ENV CF_CLI_VERSION "8.8.3"
+ENV CF_CLI_VERSION "8.9.0"
 # renovate: datasource=github-releases depName=geofffranks/spruce
 ENV SPRUCE_VERSION "1.31.1"
 
