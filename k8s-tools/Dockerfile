@@ -81,7 +81,7 @@ RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGI
 
 # renovate: datasource=github-releases depName=mikefarah/yq
 ENV YQ_VERSION 4.45.1
-ENV YQ_SUM 638c4b251c49201fc94b598834b715f8f1c6e9b1854d2820772d2c79f0289002
+ENV YQ_SUM 654d2943ca1d3be2024089eb4f270f4070f491a0610481d128509b2834870049
 ENV YQ_FILENAME yq_linux_amd64
 ADD https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} .
 RUN echo "Computed ${YQ_FILENAME} sha256sum: $(sha256sum ${YQ_FILENAME})" \

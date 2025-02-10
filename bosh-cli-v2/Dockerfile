@@ -18,6 +18,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 RUN wget -nv https://github.com/cloudfoundry/bosh-cli/releases/download/v${BOSH_CLI_VERSION}/${BOSH_CLI_FILENAME} \
+  && echo "Computed sha256sum: $(sha256sum ${BOSH_CLI_FILENAME})" \
   && echo "${BOSH_CLI_SUM}  ${BOSH_CLI_FILENAME}" | sha256sum -c - \
   && chmod +x ${BOSH_CLI_FILENAME} \
   && mv ${BOSH_CLI_FILENAME} /usr/local/bin/bosh
@@ -28,6 +29,7 @@ ENV CREDHUB_CLI_SUM 15cb96ea05a85020c83ef81d7a72f7da43a8671f8e60ed3f7ddc6660a0c8
 ENV CREDHUB_CLI_FILENAME credhub-linux-amd64-${CREDHUB_CLI_VERSION}.tgz
 
 RUN wget -nv https://github.com/cloudfoundry/credhub-cli/releases/download/${CREDHUB_CLI_VERSION}/${CREDHUB_CLI_FILENAME} \
+  && echo "Computed sha256sum: $(sha256sum ${CREDHUB_CLI_FILENAME})" \
   && echo "${CREDHUB_CLI_SUM}  ${CREDHUB_CLI_FILENAME}" | sha256sum -c - \
   && tar zxvf ${CREDHUB_CLI_FILENAME} \
   && chmod +x credhub \
@@ -35,10 +37,11 @@ RUN wget -nv https://github.com/cloudfoundry/credhub-cli/releases/download/${CRE
 
 # renovate: datasource=github-releases depName=mikefarah/yq
 ENV YQ_VERSION 4.45.1
-ENV YQ_SUM 638c4b251c49201fc94b598834b715f8f1c6e9b1854d2820772d2c79f0289002
+ENV YQ_SUM 654d2943ca1d3be2024089eb4f270f4070f491a0610481d128509b2834870049
 ENV YQ_FILENAME yq_linux_amd64
 ENV YQ_REPO github.com/mikefarah/yq
 RUN wget -nv https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} \
+  && echo "Computed sha256sum: $(sha256sum ${YQ_FILENAME})" \
   && echo "${YQ_SUM}  ${YQ_FILENAME}" | sha256sum -c - \
   && chmod +x ${YQ_FILENAME} \
   && mv ${YQ_FILENAME} /usr/local/bin/yq
