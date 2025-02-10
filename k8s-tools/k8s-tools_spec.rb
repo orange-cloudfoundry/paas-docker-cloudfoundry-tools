@@ -3,13 +3,13 @@ require 'docker'
 require 'serverspec'
 
 BOSH_CLI_VERSION="7.7.1" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
-YTT_VERSION="0.51.0"  # renovate: datasource=github-releases depName=k14s/ytt
+YTT_VERSION="0.51.1"  # renovate: datasource=github-releases depName=k14s/ytt
 CREDHUB_CLI_VERSION='2.9.39' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
 KUSTOMIZE_VERSION="5.0.3" # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
-KAPP_VERSION="0.63.3" # renovate: datasource=github-releases depName=k14s/kapp
+KAPP_VERSION="0.64.0" # renovate: datasource=github-releases depName=k14s/kapp
 KUBECTL_VERSION="1.30.9" # renovate: datasource=github-tags depName=kubernetes/kubectl
 HELM_VERSION="3.14.4" # renovate: datasource=github-releases depName=helm/helm
-KUTTL_VERSION="0.19.0" # renovate: datasource=github-releases depName=kudobuilder/kuttl
+KUTTL_VERSION="0.21.0" # renovate: datasource=github-releases depName=kudobuilder/kuttl
 RUBY_VERSION = "3.1"
 
 DEPS = "unzip curl openssl ca-certificates git libc6 bash jq gettext"
