@@ -51,10 +51,10 @@ describe "k8s image" do
     ).to match("v#{KUSTOMIZE_VERSION}\n")
   end
 
-  it "has the expected version of Kapp (#{KAPP_VERSION})" do
+  it "has NOT the expected version of Kapp (#{KAPP_VERSION})" do
     expect(
-        command("kapp --version").stdout
-    ).to match(/#{KAPP_VERSION}/)
+        command("kapp --version").stderr
+    ).to match(/kapp: not found/)
   end
 
   it "has the expected version of helm (#{HELM_VERSION})" do
