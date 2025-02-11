@@ -115,4 +115,22 @@ describe "bosh-cli-v2-cf-cli image" do
       command("jq --help").exit_status
     ).to eq(0)
   end
+
+  it "has `host` available" do
+    expect(
+      command("host -V").exit_status
+    ).to eq(0)
+  end
+
+  it "has `zip` available" do
+    expect(
+      command("zip --version").exit_status
+    ).to eq(0)
+  end
+
+  it "has `scp` provided by `ssh` available" do
+    expect(
+      command("ssh -V").exit_status
+    ).to eq(0)
+  end
 end
