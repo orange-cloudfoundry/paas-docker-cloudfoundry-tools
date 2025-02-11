@@ -24,7 +24,7 @@ RUN wget -nv https://github.com/cloudfoundry/bosh-cli/releases/download/v${BOSH_
   && mv ${BOSH_CLI_FILENAME} /usr/local/bin/bosh
 
 # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
-ENV CREDHUB_CLI_VERSION 2.9.39
+ENV CREDHUB_CLI_VERSION 2.9.42
 ENV CREDHUB_CLI_SUM 15cb96ea05a85020c83ef81d7a72f7da43a8671f8e60ed3f7ddc6660a0c83b2e
 ENV CREDHUB_CLI_FILENAME credhub-linux-amd64-${CREDHUB_CLI_VERSION}.tgz
 
