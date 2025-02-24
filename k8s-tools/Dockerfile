@@ -70,7 +70,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${HELM_FILENAME})" \
     && rm -rf linux-amd64
 
 # renovate: datasource=github-releases depName=kudobuilder/kuttl
-ENV KUTTL_VERSION 0.21.0
+ENV KUTTL_VERSION 0.22.0
 ENV KUTTL_PLUGIN_SUM 5fdca46d6ee88c14e2f4aa6b2a398b205f0991fb5e078caf36cd87c9414b715c
 ENV KUTTL_PLUGIN_FILENAME kubectl-kuttl_${KUTTL_VERSION}_linux_x86_64
 ADD https://github.com/kudobuilder/kuttl/releases/download/v${KUTTL_VERSION}/${KUTTL_PLUGIN_FILENAME} .
