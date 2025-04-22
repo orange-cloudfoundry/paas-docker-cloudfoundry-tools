@@ -19,7 +19,7 @@ jobs:
       packages: write
       contents: write
     steps:
-    - uses: actions/checkout@v4.2.2
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
     -
       name: Login to DockerHub
       uses: docker/login-action@v3
@@ -50,7 +50,11 @@ jobs:
         context: ${{env.IMAGE}}
         push: true
         tags: |
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
           ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
           ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
       env:
         IMAGE: curl-ssl
@@ -61,7 +65,11 @@ jobs:
         context: ${{env.IMAGE}}
         push: true
         tags: |
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
           ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
           ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
       env:
         IMAGE: git-ssh
@@ -72,7 +80,11 @@ jobs:
         context: ${{env.IMAGE}}
         push: true
         tags: |
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
           ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
           ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
       env:
         IMAGE: cf-cli
@@ -83,8 +95,11 @@ jobs:
         context: ${{env.IMAGE}}
         push: true
         tags: |
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
           ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
           ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
       env:
         IMAGE: k8s-tools
@@ -95,9 +110,11 @@ jobs:
         context: ${{env.IMAGE}}
         push: true
         tags: |
-          
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
           ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
           ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
       env:
         IMAGE: bosh-cli-v2
@@ -108,9 +125,11 @@ jobs:
         context: ${{env.IMAGE}}
         push: true
         tags: |
-          
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
           ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
           ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
       env:
         IMAGE: terraform
@@ -121,9 +140,11 @@ jobs:
         context: ${{env.IMAGE}}
         push: true
         tags: |
-          
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
           ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
           ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
       env:
         IMAGE: spruce
@@ -134,9 +155,11 @@ jobs:
         context: ${{env.IMAGE}}
         push: true
         tags: |
-          
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
           ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
           ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
       env:
         IMAGE: awscli
@@ -147,9 +170,11 @@ jobs:
         context: ${{env.IMAGE}}
         push: true
         tags: |
-          
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
           ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
           ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
       env:
         IMAGE: bosh-cli-v2-cf-cli
