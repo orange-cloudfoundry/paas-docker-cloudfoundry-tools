@@ -19,174 +19,164 @@ jobs:
       packages: write
       contents: write
     steps:
-    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-    -
-      name: Login to DockerHub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
-    -
-      name: Login to GitHub Container Registry
-      uses: docker/login-action@v3
-      with:
-        registry: ghcr.io
-        username: ${{ github.repository_owner }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-    -
-      name: Bump version
-      id: bump-version
-      uses: ietf-tools/semver-action@1c7c3f023f427188333afc94c8b91c76d63ec799 # v1
-      with:
-        token: ${{ github.token }}
-        branch: main
-        noVersionBumpBehavior: patch
-        majorList: major
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Bump version
+        id: bump-version
+        uses: ietf-tools/semver-action@1c7c3f023f427188333afc94c8b91c76d63ec799 # v1
+        with:
+          token: ${{ github.token }}
+          branch: main
+          noVersionBumpBehavior: patch
+          majorList: major
 
-    -
-      name: publish curl-ssl image
-      uses: docker/build-push-action@v6.13.0
-      with:
-        context: ${{env.IMAGE}}
-        push: true
-        tags: |
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-      env:
-        IMAGE: curl-ssl
-    -
-      name: publish git-ssh image
-      uses: docker/build-push-action@v6.13.0
-      with:
-        context: ${{env.IMAGE}}
-        push: true
-        tags: |
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-      env:
-        IMAGE: git-ssh
-    -
-      name: publish cf-cli image
-      uses: docker/build-push-action@v6.13.0
-      with:
-        context: ${{env.IMAGE}}
-        push: true
-        tags: |
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-      env:
-        IMAGE: cf-cli
-    -
-      name: publish k8s-tools image
-      uses: docker/build-push-action@v6.13.0
-      with:
-        context: ${{env.IMAGE}}
-        push: true
-        tags: |
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-      env:
-        IMAGE: k8s-tools
-    -
-      name: publish bosh-cli-v2 image
-      uses: docker/build-push-action@v6.13.0
-      with:
-        context: ${{env.IMAGE}}
-        push: true
-        tags: |
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-      env:
-        IMAGE: bosh-cli-v2
-    -
-      name: publish terraform image
-      uses: docker/build-push-action@v6.13.0
-      with:
-        context: ${{env.IMAGE}}
-        push: true
-        tags: |
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-      env:
-        IMAGE: terraform
-    -
-      name: publish spruce image
-      uses: docker/build-push-action@v6.13.0
-      with:
-        context: ${{env.IMAGE}}
-        push: true
-        tags: |
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-      env:
-        IMAGE: spruce
-    -
-      name: publish awscli image
-      uses: docker/build-push-action@v6.13.0
-      with:
-        context: ${{env.IMAGE}}
-        push: true
-        tags: |
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-      env:
-        IMAGE: awscli
-    -
-      name: publish bosh-cli-v2-cf-cli image
-      uses: docker/build-push-action@v6.13.0
-      with:
-        context: ${{env.IMAGE}}
-        push: true
-        tags: |
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
-          ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
-          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
-      env:
-        IMAGE: bosh-cli-v2-cf-cli
-    - # see https://github.com/ncipollo/release-action
-      name: create github release
-      id: create-github-release
-      uses: ncipollo/release-action@cdcc88a9acf3ca41c16c37bb7d21b9ad48560d87 # v1.15.0
-      with:
-        tag: ${{ steps.bump-version.outputs.next}}
-        draft: false
-        allowUpdates: false # > indicates if we should update a release if it already exists.
-        generateReleaseNotes: true
+      - name: publish curl-ssl image
+        uses: docker/build-push-action@v6.13.0
+        with:
+          context: ${{env.IMAGE}}
+          push: true
+          tags: |
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+        env:
+          IMAGE: curl-ssl
+      - name: publish git-ssh image
+        uses: docker/build-push-action@v6.13.0
+        with:
+          context: ${{env.IMAGE}}
+          push: true
+          tags: |
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+        env:
+          IMAGE: git-ssh
+      - name: publish cf-cli image
+        uses: docker/build-push-action@v6.13.0
+        with:
+          context: ${{env.IMAGE}}
+          push: true
+          tags: |
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+        env:
+          IMAGE: cf-cli
+      - name: publish k8s-tools image
+        uses: docker/build-push-action@v6.13.0
+        with:
+          context: ${{env.IMAGE}}
+          push: true
+          tags: |
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+        env:
+          IMAGE: k8s-tools
+      - name: publish bosh-cli-v2 image
+        uses: docker/build-push-action@v6.13.0
+        with:
+          context: ${{env.IMAGE}}
+          push: true
+          tags: |
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+        env:
+          IMAGE: bosh-cli-v2
+      - name: publish terraform image
+        uses: docker/build-push-action@v6.13.0
+        with:
+          context: ${{env.IMAGE}}
+          push: true
+          tags: |
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+        env:
+          IMAGE: terraform
+      - name: publish spruce image
+        uses: docker/build-push-action@v6.13.0
+        with:
+          context: ${{env.IMAGE}}
+          push: true
+          tags: |
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+        env:
+          IMAGE: spruce
+      - name: publish awscli image
+        uses: docker/build-push-action@v6.13.0
+        with:
+          context: ${{env.IMAGE}}
+          push: true
+          tags: |
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+        env:
+          IMAGE: awscli
+      - name: publish bosh-cli-v2-cf-cli image
+        uses: docker/build-push-action@v6.13.0
+        with:
+          context: ${{env.IMAGE}}
+          push: true
+          tags: |
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:latest
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{github.sha}}
+            ${{env.DOCKERHUB_ORG}}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}          
+            ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{ steps.bump-version.outputs.next}}
+        env:
+          IMAGE: bosh-cli-v2-cf-cli
+      - # see https://github.com/ncipollo/release-action
+        name: create github release
+        id: create-github-release
+        uses: ncipollo/release-action@cdcc88a9acf3ca41c16c37bb7d21b9ad48560d87 # v1.15.0
+        with:
+          tag: ${{ steps.bump-version.outputs.next}}
+          draft: false
+          allowUpdates: false # > indicates if we should update a release if it already exists.
+          generateReleaseNotes: true
+    outputs:
+      tagged_image_version: ${{ steps.bump-version.outputs.next}}
 
   check_tagged_images:
     name: check tagged images
@@ -200,12 +190,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      -
-        name: check docker public images
+      - name: check docker public images
         run: | # shellcheck disable=SC2086
           for image in $BASE_IMAGES $IMAGES_WITH_DEPENDENCIES;do
             echo "Processing $image: checking manifest for $DOCKERHUB_ORG/$image:$IMAGE_VERSION"
             docker manifest inspect $DOCKERHUB_ORG/$image:$IMAGE_VERSION
           done
         env:
-          IMAGE_VERSION: ${{ steps.bump-version.outputs.next}}
+          IMAGE_VERSION: ${{ needs.tag_and_release.outputs.tagged_image_version}}
