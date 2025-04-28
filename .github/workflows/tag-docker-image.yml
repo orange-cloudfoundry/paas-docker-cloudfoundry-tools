@@ -41,7 +41,7 @@ jobs:
           majorList: major
 
       - name: publish curl-ssl image
-        uses: docker/build-push-action@v6.13.0
+        uses: docker/build-push-action@v6.16.0
         with:
           context: ${{env.IMAGE}}
           push: true
@@ -55,7 +55,7 @@ jobs:
         env:
           IMAGE: curl-ssl
       - name: publish git-ssh image
-        uses: docker/build-push-action@v6.13.0
+        uses: docker/build-push-action@v6.16.0
         with:
           context: ${{env.IMAGE}}
           push: true
@@ -69,7 +69,7 @@ jobs:
         env:
           IMAGE: git-ssh
       - name: publish cf-cli image
-        uses: docker/build-push-action@v6.13.0
+        uses: docker/build-push-action@v6.16.0
         with:
           context: ${{env.IMAGE}}
           push: true
@@ -83,7 +83,7 @@ jobs:
         env:
           IMAGE: cf-cli
       - name: publish k8s-tools image
-        uses: docker/build-push-action@v6.13.0
+        uses: docker/build-push-action@v6.16.0
         with:
           context: ${{env.IMAGE}}
           push: true
@@ -97,7 +97,7 @@ jobs:
         env:
           IMAGE: k8s-tools
       - name: publish bosh-cli-v2 image
-        uses: docker/build-push-action@v6.13.0
+        uses: docker/build-push-action@v6.16.0
         with:
           context: ${{env.IMAGE}}
           push: true
@@ -111,7 +111,7 @@ jobs:
         env:
           IMAGE: bosh-cli-v2
       - name: publish terraform image
-        uses: docker/build-push-action@v6.13.0
+        uses: docker/build-push-action@v6.16.0
         with:
           context: ${{env.IMAGE}}
           push: true
@@ -125,7 +125,7 @@ jobs:
         env:
           IMAGE: terraform
       - name: publish spruce image
-        uses: docker/build-push-action@v6.13.0
+        uses: docker/build-push-action@v6.16.0
         with:
           context: ${{env.IMAGE}}
           push: true
@@ -139,7 +139,7 @@ jobs:
         env:
           IMAGE: spruce
       - name: publish awscli image
-        uses: docker/build-push-action@v6.13.0
+        uses: docker/build-push-action@v6.16.0
         with:
           context: ${{env.IMAGE}}
           push: true
@@ -153,7 +153,7 @@ jobs:
         env:
           IMAGE: awscli
       - name: publish bosh-cli-v2-cf-cli image
-        uses: docker/build-push-action@v6.13.0
+        uses: docker/build-push-action@v6.16.0
         with:
           context: ${{env.IMAGE}}
           push: true
