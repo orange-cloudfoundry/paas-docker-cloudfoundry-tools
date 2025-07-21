@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.22
 
 ENV SPRUCE_VERSION 1.30.2
 

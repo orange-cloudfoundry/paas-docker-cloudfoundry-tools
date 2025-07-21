@@ -5,7 +5,7 @@ require 'serverspec'
 AWSCLI_PACKAGES = "curl openssl ca-certificates less"
 
 AWSCLI_BIN = "/usr/bin/aws"
-AWSCLI_VERSION = "1.19.112"
+AWSCLI_VERSION = "1.27.79"
 
 describe "awscli image" do
   before(:all) {
@@ -34,16 +34,10 @@ describe "awscli image" do
   end
 
   it "the 'aws help' command works" do
-    synopsis_interleaved_with_backspaces = [
-      0x0a, 0x53, 0x08, 0x53, 0x59, 0x08, 0x59, 0x4e,
-      0x08, 0x4e, 0x4f, 0x08, 0x4f, 0x50, 0x08, 0x50,
-      0x53, 0x08, 0x53, 0x49, 0x08, 0x49, 0x53, 0x08,
-      0x53, 0x0a
-    ].map(&:chr).join('')
-
+    synopsis = 'SYNOPSIS'
     expect(
       command("aws help").stdout
-    ).to include(synopsis_interleaved_with_backspaces)
+    ).to include(synopsis)
   end
 
   it "installs required packages" do
@@ -57,4 +51,7 @@ describe "awscli image" do
     expect(cmd.exit_status).to eq(0)
   end
 
+  it 'installs the right version of Alpine' do
+    expect(os_version).to include('Alpine Linux 3.19')
+  end
 end
