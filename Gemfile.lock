@@ -1,45 +1,49 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    diff-lcs (1.5.0)
-    docker-api (2.2.0)
-      excon (>= 0.47.0)
+    base64 (0.3.0)
+    diff-lcs (1.6.2)
+    docker-api (2.4.0)
+      excon (>= 0.64.0)
       multi_json
-    excon (0.99.0)
-    json (2.6.3)
-    multi_json (1.15.0)
-    net-scp (4.0.0)
+    excon (1.2.8)
+      logger
+    json (2.13.0)
+    logger (1.7.0)
+    multi_json (1.17.0)
+    net-scp (4.1.0)
       net-ssh (>= 2.6.5, < 8.0.0)
-    net-ssh (7.1.0)
-    net-telnet (0.1.1)
-    rake (13.0.6)
-    rspec (3.12.0)
-      rspec-core (~> 3.12.0)
-      rspec-expectations (~> 3.12.0)
-      rspec-mocks (~> 3.12.0)
-    rspec-core (3.12.1)
-      rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.2)
+    net-ssh (7.3.0)
+    net-telnet (0.2.0)
+    rake (13.3.0)
+    rspec (3.13.1)
+      rspec-core (~> 3.13.0)
+      rspec-expectations (~> 3.13.0)
+      rspec-mocks (~> 3.13.0)
+    rspec-core (3.13.5)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.12.0)
-    rspec-its (1.3.0)
-      rspec-core (>= 3.0.0)
-      rspec-expectations (>= 3.0.0)
-    rspec-mocks (3.12.4)
+      rspec-support (~> 3.13.0)
+    rspec-its (2.0.0)
+      rspec-core (>= 3.13.0)
+      rspec-expectations (>= 3.13.0)
+    rspec-mocks (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.12.0)
-    rspec-support (3.12.0)
-    serverspec (2.42.2)
+      rspec-support (~> 3.13.0)
+    rspec-support (3.13.4)
+    serverspec (2.43.0)
       multi_json
       rspec (~> 3.0)
       rspec-its
       specinfra (~> 2.72)
     sfl (2.3)
     should_not (1.1.0)
-    specinfra (2.85.0)
+    specinfra (2.94.1)
+      base64
       net-scp
       net-ssh (>= 2.7)
-      net-telnet (= 0.1.1)
+      net-telnet
       sfl
 
 PLATFORMS
@@ -53,4 +57,4 @@ DEPENDENCIES
   should_not (~> 1.1)
 
 BUNDLED WITH
-   2.4.8
+   2.7.0
