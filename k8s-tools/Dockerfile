@@ -22,7 +22,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${YTT_FILENAME})" \
     && mv ${YTT_FILENAME} ytt
 
 # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
-ENV CREDHUB_CLI_VERSION 2.9.42
+ENV CREDHUB_CLI_VERSION 2.9.52
 ENV CREDHUB_CLI_SUM 9543b042817f9442ef5ed16b65a0839c8aa14c4db3b54076df798bbc8b6182c3
 ENV CREDHUB_CLI_FILENAME credhub-linux-amd64-${CREDHUB_CLI_VERSION}.tgz
 ADD https://github.com/cloudfoundry/credhub-cli/releases/download/${CREDHUB_CLI_VERSION}/${CREDHUB_CLI_FILENAME} .
