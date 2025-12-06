@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'docker'
 require 'serverspec'
 
-BOSH_CLI_VERSION="7.7.1" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
+BOSH_CLI_VERSION="7.9.15" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 CREDHUB_CLI_VERSION='2.9.42' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
 RUBY_VERSION = "3.4"
 
