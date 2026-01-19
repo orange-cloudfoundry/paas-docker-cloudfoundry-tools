@@ -14,7 +14,7 @@ WORKDIR /usr/local/bin
 
 # renovate: datasource=github-releases depName=k14s/ytt
 ENV YTT_VERSION "0.52.2"
-ENV YTT_SUM 026a12ee7108ff2d1150eb1347d544367d92e993ade7b2d2727c4c8d13a47a6b
+ENV YTT_SUM 76d5355a5135c59a1791f420f3094579f775cbf2a987328f920a05e1338f1e1f
 ENV YTT_FILENAME ytt-linux-amd64
 ADD https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/${YTT_FILENAME} .
 RUN echo "Computed sha256sum: $(sha256sum ${YTT_FILENAME})" \
@@ -71,7 +71,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${HELM_FILENAME})" \
 
 # renovate: datasource=github-releases depName=kudobuilder/kuttl
 ENV KUTTL_VERSION 0.24.0
-ENV KUTTL_PLUGIN_SUM 5fdca46d6ee88c14e2f4aa6b2a398b205f0991fb5e078caf36cd87c9414b715c
+ENV KUTTL_PLUGIN_SUM 5189ab7b0c2a0595a971c8fc0280e180c7de6e711f085633460af1af0678031a
 ENV KUTTL_PLUGIN_FILENAME kubectl-kuttl_${KUTTL_VERSION}_linux_x86_64
 ADD https://github.com/kudobuilder/kuttl/releases/download/v${KUTTL_VERSION}/${KUTTL_PLUGIN_FILENAME} .
 RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGIN_FILENAME})" \
