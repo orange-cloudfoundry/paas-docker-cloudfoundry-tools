@@ -10,7 +10,7 @@ on:
 env:
   #DOCKERHUB_ORG: orangecloudfoundry
   DOCKERHUB_ORG: elpaasoci
-  BASE_IMAGES: cf-cli curl-ssl git-ssh k8s-tools terraform bosh-cli-v2 spruce
+  BASE_IMAGES: cf-cli curl-ssl git-ssh k8s-tools terraform bosh-cli-v2 spruce opentelemetry-shell
   IMAGES_WITH_DEPENDENCIES: awscli bosh-cli-v2-cf-cli
 
 jobs:
@@ -144,6 +144,17 @@ jobs:
           ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}
       env:
         IMAGE: spruce
+    -
+      name: publish opentelemetry-shell image on GHCR only
+      uses: docker/build-push-action@v6.18.0
+      with:
+        context: ${{env.IMAGE}}
+        push: true
+        tags: |
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:latest
+          ghcr.io/${{ github.repository }}/${{env.IMAGE}}:${{github.sha}}
+      env:
+        IMAGE: opentelemetry-shell
     -
       name: build docker images with dependencies
       run: | # shellcheck disable=SC2086
