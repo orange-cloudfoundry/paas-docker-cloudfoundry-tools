@@ -10,7 +10,8 @@ on:
 env:
   #DOCKERHUB_ORG: orangecloudfoundry
   DOCKERHUB_ORG: elpaasoci
-  BASE_IMAGES: cf-cli curl-ssl git-ssh k8s-tools terraform bosh-cli-v2 spruce opentelemetry-shell
+  BASE_IMAGES: cf-cli curl-ssl git-ssh k8s-tools terraform bosh-cli-v2 spruce
+  GHCR_ONLY_IMAGES: opentelemetry-shell
   IMAGES_WITH_DEPENDENCIES: awscli bosh-cli-v2-cf-cli
 
 jobs:
@@ -41,7 +42,7 @@ jobs:
     - 
       name: build docker images
       run: | # shellcheck disable=SC2086
-        for image in $BASE_IMAGES;do
+        for image in $BASE_IMAGES $GHCR_ONLY_IMAGES;do
           echo "Processing $image"
           bundle exec rake build:$image
         done
@@ -49,7 +50,7 @@ jobs:
     -
       name: test docker images
       run: | # shellcheck disable=SC2086
-        for image in $BASE_IMAGES;do
+        for image in $BASE_IMAGES $GHCR_ONLY_IMAGES;do
           echo "Processing $image"
           bundle exec rake spec:$image
         done
@@ -198,7 +199,7 @@ jobs:
         IMAGE: bosh-cli-v2-cf-cli
 
 
-  check_published_images:
+  check_docker_published_images:
     name: check published images
     runs-on: ubuntu-latest
     needs: [ build_and_publish ]
@@ -221,7 +222,7 @@ jobs:
   push_for_renovate:
     name: Publish commit for renovate
     runs-on: ubuntu-latest
-    needs: [ check_published_images ]
+    needs: [ check_docker_published_images ]
     steps:
       - uses: actions/checkout@v6.0.1
         with:
