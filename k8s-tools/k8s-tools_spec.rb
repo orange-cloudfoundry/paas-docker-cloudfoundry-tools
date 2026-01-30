@@ -10,7 +10,7 @@ KAPP_VERSION="0.65.0" # renovate: datasource=github-releases depName=k14s/kapp
 KUBECTL_VERSION="1.32.11" # renovate: datasource=github-tags depName=kubernetes/kubectl
 HELM_VERSION="3.14.4" # renovate: datasource=github-releases depName=helm/helm
 KUTTL_VERSION="0.24.0" # renovate: datasource=github-releases depName=kudobuilder/kuttl
-RUBY_VERSION = "3.4"
+RUBY_VERSION = "4.0"
 
 DEPS = "unzip curl openssl ca-certificates git libc6 bash jq gettext"
 
