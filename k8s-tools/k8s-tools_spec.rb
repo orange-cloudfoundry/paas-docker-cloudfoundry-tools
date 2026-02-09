@@ -8,7 +8,7 @@ CREDHUB_CLI_VERSION='2.9.52' # renovate: datasource=github-releases depName=clou
 KUSTOMIZE_VERSION="5.0.3" # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
 KAPP_VERSION="0.65.0" # renovate: datasource=github-releases depName=k14s/kapp
 KUBECTL_VERSION="1.32.11" # renovate: datasource=github-tags depName=kubernetes/kubectl
-HELM_VERSION="3.14.4" # renovate: datasource=github-releases depName=helm/helm
+HELM_VERSION="4.1.1" # renovate: datasource=github-releases depName=helm/helm
 KUTTL_VERSION="0.24.0" # renovate: datasource=github-releases depName=kudobuilder/kuttl
 RUBY_VERSION = "3.4"
 
