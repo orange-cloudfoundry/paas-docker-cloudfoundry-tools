@@ -50,7 +50,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${KUSTOMIZE_FILENAME})" \
 #    && mv kapp-linux-amd64 kapp
 
 # renovate: datasource=github-tags depName=kubernetes/kubectl
-ENV KUBECTL_VERSION 1.32.11
+ENV KUBECTL_VERSION 1.34.4
 ENV KUBECTL_SUM 48581d0e808bd8b7d3c3fc014e86b170e25a987df04c8a879b982b28a5180815
 ENV KUBECTL_FILENAME kubectl
 ADD https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl .
