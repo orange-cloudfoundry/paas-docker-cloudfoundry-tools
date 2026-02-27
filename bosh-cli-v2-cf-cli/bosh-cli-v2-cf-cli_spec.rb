@@ -9,7 +9,7 @@ SPRUCE_VERSION = "1.31.1" # renovate: datasource=github-releases depName=geofffr
 BOSH_ENV_DEPS = "build-essential zlib1g-dev openssl libxslt1-dev libxml2-dev \
     libssl-dev libreadline8 libreadline-dev libyaml-dev libsqlite3-dev sqlite3"
 CF_ENV_DEPS = "unzip curl openssl ca-certificates git libc6 bash jq gettext make"
-RUBY_VERSION = "3.4"
+RUBY_VERSION = "4.0"
 
 describe "bosh-cli-v2-cf-cli image" do
   before(:all) {
