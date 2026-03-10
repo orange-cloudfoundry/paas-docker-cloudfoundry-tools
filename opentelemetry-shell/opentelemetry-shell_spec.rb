@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'docker'
 require 'serverspec'
 
-OT_SHELL_VERSION="5.42.0" # renovate: datasource=github-releases depName=plengauer/Thoth
+OT_SHELL_VERSION="5.47.3" # renovate: datasource=github-releases depName=plengauer/Thoth
 
 describe "opentelemetry-shell image" do
   before(:all) {
