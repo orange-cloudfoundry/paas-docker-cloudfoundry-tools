@@ -5,7 +5,7 @@ require 'serverspec'
 BOSH_CLI_VERSION="7.9.15" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 CF_CLI_VERSION="8.17.0" # renovate: datasource=github-releases depName=cloudfoundry/cli
 SPRUCE_BIN = "/usr/local/bin/spruce"
-SPRUCE_VERSION = "1.31.1" # renovate: datasource=github-releases depName=geofffranks/spruce
+SPRUCE_VERSION = "1.35.6" # renovate: datasource=github-releases depName=geofffranks/spruce
 BOSH_ENV_DEPS = "build-essential zlib1g-dev openssl libxslt1-dev libxml2-dev \
     libssl-dev libreadline8 libreadline-dev libyaml-dev libsqlite3-dev sqlite3"
 CF_ENV_DEPS = "unzip curl openssl ca-certificates git libc6 bash jq gettext make"
