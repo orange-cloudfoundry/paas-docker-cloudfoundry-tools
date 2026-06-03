@@ -21,7 +21,7 @@ jobs:
     permissions:
       packages: write
     steps:
-    - uses: actions/checkout@v6.0.2
+    - uses: actions/checkout@v6.0.3
     - uses: ruby/setup-ruby@v1
       with:      
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
@@ -224,7 +224,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ check_docker_published_images ]
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6.0.3
         with:
           ref: main
         if: ${{ github.ref_name == 'main' }}
