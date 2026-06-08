@@ -4,7 +4,7 @@ ENV PACKAGES "unzip curl openssl ca-certificates git libc6-compat bash jq gettex
 # renovate: datasource=github-releases depName=cloudfoundry/cli
 ENV CF_CLI_VERSION "8.17.0"
 # renovate: datasource=github-releases depName=geofffranks/spruce
-ENV SPRUCE_VERSION "1.35.6"
+ENV SPRUCE_VERSION "1.35.7"
 
 RUN apk add --no-cache $PACKAGES
 
