@@ -5,7 +5,7 @@ require 'serverspec'
 BOSH_CLI_VERSION="7.9.15" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 YTT_VERSION="0.52.2"  # renovate: datasource=github-releases depName=k14s/ytt
 CREDHUB_CLI_VERSION='2.9.52' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
-KUSTOMIZE_VERSION="5.0.3" # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
+KUSTOMIZE_VERSION="5.7.1" # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
 KAPP_VERSION="0.65.0" # renovate: datasource=github-releases depName=k14s/kapp
 KUBECTL_VERSION="1.34.8" # renovate: datasource=github-tags depName=kubernetes/kubectl
 HELM_VERSION="3.14.4" # renovate: datasource=github-releases depName=helm/helm
@@ -26,7 +26,7 @@ describe "k8s image" do
   end
 
   it "has the expected version of Kubectl (#{KUBECTL_VERSION}) with embedded Kustomize" do
-    EMBEDDED_KUSTOMIZE_VERSION="5.5.0"
+    EMBEDDED_KUSTOMIZE_VERSION="5.7.1"
     expect(
         command("kubectl version --client=true").stdout.strip
     ).to eq("Client Version: v#{KUBECTL_VERSION}\nKustomize Version: v#{EMBEDDED_KUSTOMIZE_VERSION}")
