@@ -32,8 +32,8 @@ RUN echo "Computed sha256sum: $(sha256sum ${CREDHUB_CLI_FILENAME})" \
 
 # We need to synchronize this kustomize version with embedded fluxcd version and kubectl embedded version !
 # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
-ENV KUSTOMIZE_VERSION 5.0.3
-ENV KUSTOMIZE_SUM c627b1575c3fecbc7ad1c181c23a7adcacf19732dab627eb57e89a7bc4c1e929
+ENV KUSTOMIZE_VERSION 5.7.1
+ENV KUSTOMIZE_SUM ea375e7372f9aa029129d4b2d16c66b7750b7f1213c4f66f910d981c895818d8
 ENV KUSTOMIZE_FILENAME kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz
 ADD https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz .
 RUN echo "Computed sha256sum: $(sha256sum ${KUSTOMIZE_FILENAME})" \
@@ -50,8 +50,8 @@ RUN echo "Computed sha256sum: $(sha256sum ${KUSTOMIZE_FILENAME})" \
 #    && mv kapp-linux-amd64 kapp
 
 # renovate: datasource=github-tags depName=kubernetes/kubectl
-ENV KUBECTL_VERSION 1.32.11
-ENV KUBECTL_SUM 48581d0e808bd8b7d3c3fc014e86b170e25a987df04c8a879b982b28a5180815
+ENV KUBECTL_VERSION 1.34.8
+ENV KUBECTL_SUM f6249132865c13abe3c9dd5038f5da65849cb86eee1608c001831504e481aa8c
 ENV KUBECTL_FILENAME kubectl
 ADD https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl .
 #ADD https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl .
