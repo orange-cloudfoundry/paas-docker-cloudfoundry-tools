@@ -50,7 +50,7 @@ describe "k8s image" do
     ).to match("v#{KUSTOMIZE_VERSION}\n")
   end
 
-  it "has NOT the expected version of Kapp (#{KAPP_VERSION})" do
+  it "has NOT the expected version of Kapp" do
     expect(
         command("kapp --version").stderr
     ).to match(/kapp: not found/)
