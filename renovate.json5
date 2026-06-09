@@ -12,7 +12,7 @@
     // We use dependa-bot for this
     enabled: false,
   },
-  baseBranches: [
+  baseBranchPatterns: [
     'main',
   ],
   ignorePaths: [
@@ -112,7 +112,7 @@
   customManagers: [
     {
       customType: 'regex',
-      fileMatch: ['.*/.*_spec\\.rb'], //https://regex101.com/r/rIOdcZ/1
+      managerFilePatterns: ['/.*/.*_spec\\.rb/']//https://regex101.com/r/rIOdcZ/1
       matchStrings: [
         // https://docs.renovatebot.com/modules/manager/regex/#regular-expression-capture-groups
         // The regex manager matches are done per-file and not per-line,
@@ -124,9 +124,9 @@
     },
     {
       customType: 'regex',
-      fileMatch: [
-        '.*/Dockerfile$',
-        '.*/.*_spec\\.rb',
+      managerFilePatterns: [
+        '/.*/Dockerfile$/',
+        '/.*/.*_spec\\.rb/',
       ],
       matchStrings: [
         // For dockerfile: https://regex101.com/r/QUjPL3/3
@@ -142,9 +142,9 @@
     },
     {
       customType: 'regex',
-      fileMatch: [
-        '.*/Dockerfile$',
-        '.*/.*_spec\\.rb',
+      managerFilePatterns: [
+        '/.*/Dockerfile$/',
+        '/.*/.*_spec\\.rb/',
       ],
       matchStrings: [
         // For dockerfile: https://regex101.com/r/QUjPL3/5
