@@ -4,7 +4,7 @@ require 'serverspec'
 
 BOSH_CLI_VERSION="7.9.15" # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 YTT_VERSION="0.52.2"  # renovate: datasource=github-releases depName=k14s/ytt
-CREDHUB_CLI_VERSION='2.9.52' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
+CREDHUB_CLI_VERSION='2.9.57' # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
 KUSTOMIZE_VERSION="5.7.1" # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
 # KAPP_VERSION="0.65.0" # renovate: datasource=github-releases depName=k14s/kapp
 KUBECTL_VERSION="1.34.8" # renovate: datasource=github-tags depName=kubernetes/kubectl
@@ -50,7 +50,7 @@ describe "k8s image" do
     ).to match("v#{KUSTOMIZE_VERSION}\n")
   end
 
-  it "has NOT the expected version of Kapp (#{KAPP_VERSION})" do
+  it "has NOT the expected version of Kapp" do
     expect(
         command("kapp --version").stderr
     ).to match(/kapp: not found/)
