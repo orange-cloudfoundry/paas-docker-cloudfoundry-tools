@@ -59,8 +59,8 @@ RUN echo "Computed sha256sum: $(sha256sum ${KUBECTL_FILENAME})" \
     && echo "${KUBECTL_SUM}  ${KUBECTL_FILENAME}" | sha256sum -c -
 
 # renovate: datasource=github-releases depName=helm/helm
-ENV HELM_VERSION 3.14.4
-ENV HELM_SUM a5844ef2c38ef6ddf3b5a8f7d91e7e0e8ebc39a38bb3fc8013d629c1ef29c259
+ENV HELM_VERSION 3.17.1
+ENV HELM_SUM 3b66f3cd28409f29832b1b35b43d9922959a32d795003149707fea84cbcd4469
 ENV HELM_FILENAME helm-v${HELM_VERSION}-linux-amd64.tar.gz
 ADD https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz .
 RUN echo "Computed sha256sum: $(sha256sum ${HELM_FILENAME})" \
@@ -70,14 +70,14 @@ RUN echo "Computed sha256sum: $(sha256sum ${HELM_FILENAME})" \
     && rm -rf linux-amd64
 
 # renovate: datasource=github-releases depName=kudobuilder/kuttl
-ENV KUTTL_VERSION 0.24.0
-ENV KUTTL_PLUGIN_SUM 5189ab7b0c2a0595a971c8fc0280e180c7de6e711f085633460af1af0678031a
-ENV KUTTL_PLUGIN_FILENAME kubectl-kuttl_${KUTTL_VERSION}_linux_x86_64
-ADD https://github.com/kudobuilder/kuttl/releases/download/v${KUTTL_VERSION}/${KUTTL_PLUGIN_FILENAME} .
-RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGIN_FILENAME})" \
-    && echo "${KUTTL_PLUGIN_SUM}  ${KUTTL_PLUGIN_FILENAME}" | sha256sum -c - \
-    && mv ${KUTTL_PLUGIN_FILENAME} kubectl-kuttl \
-    && ln -s kubectl-kuttl kuttl
+#ENV KUTTL_VERSION 0.24.0
+#ENV KUTTL_PLUGIN_SUM 5189ab7b0c2a0595a971c8fc0280e180c7de6e711f085633460af1af0678031a
+#ENV KUTTL_PLUGIN_FILENAME kubectl-kuttl_${KUTTL_VERSION}_linux_x86_64
+#ADD https://github.com/kudobuilder/kuttl/releases/download/v${KUTTL_VERSION}/${KUTTL_PLUGIN_FILENAME} .
+#RUN echo "Computed ${KUTTL_PLUGIN_FILENAME} sha256sum: $(sha256sum ${KUTTL_PLUGIN_FILENAME})" \
+#    && echo "${KUTTL_PLUGIN_SUM}  ${KUTTL_PLUGIN_FILENAME}" | sha256sum -c - \
+#    && mv ${KUTTL_PLUGIN_FILENAME} kubectl-kuttl \
+#    && ln -s kubectl-kuttl kuttl
 
 # renovate: datasource=github-releases depName=mikefarah/yq
 ENV YQ_VERSION 4.50.1
