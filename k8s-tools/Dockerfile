@@ -13,8 +13,8 @@ RUN apt-get update \
 WORKDIR /usr/local/bin
 
 # renovate: datasource=github-releases depName=k14s/ytt
-ENV YTT_VERSION "0.52.2"
-ENV YTT_SUM 76d5355a5135c59a1791f420f3094579f775cbf2a987328f920a05e1338f1e1f
+ENV YTT_VERSION "0.55.1"
+ENV YTT_SUM 3a2c925ed222f8db4956946d40279688edd6ceb3e919f03f919a8fc8b8532eda
 ENV YTT_FILENAME ytt-linux-amd64
 ADD https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/${YTT_FILENAME} .
 RUN echo "Computed sha256sum: $(sha256sum ${YTT_FILENAME})" \
@@ -80,8 +80,8 @@ RUN echo "Computed sha256sum: $(sha256sum ${HELM_FILENAME})" \
 #    && ln -s kubectl-kuttl kuttl
 
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION 4.50.1
-ENV YQ_SUM c7a1278e6bbc4924f41b56db838086c39d13ee25dcb22089e7fbf16ac901f0d4
+ENV YQ_VERSION 4.53.3
+ENV YQ_SUM fa52a4e758c63d38299163fbdd1edfb4c4963247918bf9c1c5d31d84789eded4
 ENV YQ_FILENAME yq_linux_amd64
 ADD https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} .
 RUN echo "Computed ${YQ_FILENAME} sha256sum: $(sha256sum ${YQ_FILENAME})" \
