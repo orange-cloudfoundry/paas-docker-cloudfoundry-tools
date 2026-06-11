@@ -1,7 +1,7 @@
 FROM ruby:3.4-slim-bullseye
 
-ENV AWSCLI_VERSION "1.19.112"
-ENV PACKAGES make python-setuptools python-pip groff less curl
+ENV AWSCLI_VERSION="1.19.112"
+ENV PACKAGES="make python-setuptools python-pip groff less curl"
 
 RUN apt-get update \
       && apt-get install -y --no-install-recommends $PACKAGES \

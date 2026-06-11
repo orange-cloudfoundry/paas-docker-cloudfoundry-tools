@@ -1,13 +1,13 @@
 FROM elpaasoci/bosh-cli-v2:latest
 
 # we use libc6 instead of libc6-compat as we do not use alpine base image
-ENV CF_PACKAGES "unzip curl openssl ca-certificates git libc6 bash jq gettext make"
+ENV CF_PACKAGES="unzip curl openssl ca-certificates git libc6 bash jq gettext make"
 # dedicated packages required by osb-cmdb or kubectl/svcat tests
-ENV PAAS_TEMPLATES_PACKAGES "zip bind9-host openssh-client"
+ENV PAAS_TEMPLATES_PACKAGES="zip bind9-host openssh-client"
 # renovate: datasource=github-releases depName=cloudfoundry/cli
-ENV CF_CLI_VERSION "8.18.3"
+ENV CF_CLI_VERSION="8.18.3"
 # renovate: datasource=github-releases depName=geofffranks/spruce
-ENV SPRUCE_VERSION "1.35.7"
+ENV SPRUCE_VERSION="1.35.7"
 
 # we also use apt-get as we use an Ubuntu image, not an Alpine
 RUN apt-get update \

@@ -1,14 +1,14 @@
 FROM ruby:3.4-slim-bullseye
 
 # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
-ENV BOSH_CLI_VERSION 7.9.15
-ENV BOSH_CLI_SUM f873260b221fa3d88e8a396df94d7382447c4f163edba483a1343d063582202b
-ENV BOSH_CLI_FILENAME bosh-cli-${BOSH_CLI_VERSION}-linux-amd64
+ENV BOSH_CLI_VERSION=7.10.5
+ENV BOSH_CLI_SUM=e9847375ba5397589e7b070305defc70321ad0e62d18b67a70a330efcab6e526
+ENV BOSH_CLI_FILENAME=bosh-cli-${BOSH_CLI_VERSION}-linux-amd64
 
-ENV DEBIAN_PACKAGES "ca-certificates wget git openssh-client file jq"
+ENV DEBIAN_PACKAGES="ca-certificates wget git openssh-client file jq"
 
 # https://bosh.io/docs/cli-env-deps.html
-ENV BOSH_ENV_DEPS "build-essential zlib1g-dev openssl libxslt1-dev \
+ENV BOSH_ENV_DEPS="build-essential zlib1g-dev openssl libxslt1-dev \
   libxml2-dev libssl-dev libreadline8 libreadline-dev libyaml-dev libsqlite3-dev sqlite3"
 
 RUN apt-get update \
@@ -24,9 +24,9 @@ RUN wget -nv https://github.com/cloudfoundry/bosh-cli/releases/download/v${BOSH_
   && mv ${BOSH_CLI_FILENAME} /usr/local/bin/bosh
 
 # renovate: datasource=github-releases depName=cloudfoundry/credhub-cli
-ENV CREDHUB_CLI_VERSION 2.9.57
-ENV CREDHUB_CLI_SUM c101391e13be84b1c0d8854559b99d3183535ad0398e5f28e793f3f029c34843
-ENV CREDHUB_CLI_FILENAME credhub-linux-amd64-${CREDHUB_CLI_VERSION}.tgz
+ENV CREDHUB_CLI_VERSION=2.9.57
+ENV CREDHUB_CLI_SUM=c101391e13be84b1c0d8854559b99d3183535ad0398e5f28e793f3f029c34843
+ENV CREDHUB_CLI_FILENAME=credhub-linux-amd64-${CREDHUB_CLI_VERSION}.tgz
 
 RUN wget -nv https://github.com/cloudfoundry/credhub-cli/releases/download/${CREDHUB_CLI_VERSION}/${CREDHUB_CLI_FILENAME} \
   && echo "Computed sha256sum: $(sha256sum ${CREDHUB_CLI_FILENAME})" \
@@ -36,10 +36,10 @@ RUN wget -nv https://github.com/cloudfoundry/credhub-cli/releases/download/${CRE
   && mv credhub /usr/local/bin/credhub
 
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION 4.53.3
-ENV YQ_SUM fa52a4e758c63d38299163fbdd1edfb4c4963247918bf9c1c5d31d84789eded4
-ENV YQ_FILENAME yq_linux_amd64
-ENV YQ_REPO github.com/mikefarah/yq
+ENV YQ_VERSION=4.53.3
+ENV YQ_SUM=fa52a4e758c63d38299163fbdd1edfb4c4963247918bf9c1c5d31d84789eded4
+ENV YQ_FILENAME=yq_linux_amd64
+ENV YQ_REPO=github.com/mikefarah/yq
 RUN wget -nv https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} \
   && echo "Computed sha256sum: $(sha256sum ${YQ_FILENAME})" \
   && echo "${YQ_SUM}  ${YQ_FILENAME}" | sha256sum -c - \
