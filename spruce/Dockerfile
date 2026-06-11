@@ -1,6 +1,6 @@
 FROM alpine:3.22
 
-ENV SPRUCE_VERSION 1.30.2
+ENV SPRUCE_VERSION=1.30.2
 
 RUN apk add --no-cache \
         wget~1 \

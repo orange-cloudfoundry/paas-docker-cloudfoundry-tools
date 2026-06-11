@@ -13,13 +13,13 @@ RUN apt update \
       bzr \
       subversion
 
-ENV GOPATH /go
-ENV PATH /go/bin:/usr/local/go/bin:$PATH
+ENV GOPATH=/go
+ENV PATH=/go/bin:/usr/local/go/bin:$PATH
 
-ENV GO_VERSION "1.20"
+ENV GO_VERSION="1.20"
 # renovate: datasource=github-releases depName=cloudfoundry/cli
-ENV CF_CLI_VERSION "8.6.0"
-ENV CF_LOG_CACHE_VERSION "2.1.0"
+ENV CF_CLI_VERSION="8.6.0"
+ENV CF_LOG_CACHE_VERSION="2.1.0"
 
 RUN \
   wget https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz -P /tmp && \
@@ -35,7 +35,7 @@ RUN wget -q -O cf.deb "https://packages.cloudfoundry.org/stable?release=debian64
     rm -f cf.deb
 
 # Setup plugins
-ENV CF_PLUGIN_HOME /root/
+ENV CF_PLUGIN_HOME=/root/
 
 # Install the log-cache-cli plugin
 RUN cf install-plugin -f "https://github.com/cloudfoundry/log-cache-cli/releases/download/v${CF_LOG_CACHE_VERSION}/log-cache-cf-plugin-linux"
