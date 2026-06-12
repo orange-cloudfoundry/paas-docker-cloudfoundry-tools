@@ -148,7 +148,7 @@
       ],
       matchStrings: [
         // For dockerfile: https://regex101.com/r/QUjPL3/6
-        'datasource=(?<datasource>github-releases) depName=(?<depName>[\\w\\d\\//\\-\\_]+)\\nENV .+_VERSION ?\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\"?\\s*',
+        'datasource=(?<datasource>github-releases) depName=(?<depName>[\\w\\d\\//\\-\\_]+)\\nENV .+_VERSION[\\s|=]?\\"?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)\\"?\\s*',
         // For spec files: https://regex101.com/r/ifWHDK/2
         '.+_VERSION\\s*=\\s*[\\"\\\']?(?<currentValue>[\\w\\d\\/\\-\\.\\_]+)?[\\"\\\']?\\s* #\\s*renovate: datasource=(?<datasource>github-releases) depName=(?<depName>[\\w\\d\\//\\-\\_]+)( versioning=(?<versioning>.+))?\\s*',
       ],
