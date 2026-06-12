@@ -10,7 +10,7 @@ KUSTOMIZE_VERSION="5.7.1" # renovate: datasource=github-releases depName=kuberne
 KUBECTL_VERSION="1.34.8" # renovate: datasource=github-tags depName=kubernetes/kubectl
 HELM_VERSION="3.17.1" # renovate: datasource=github-releases depName=helm/helm
 #KUTTL_VERSION="0.26.0" # renovate: datasource=github-releases depName=kudobuilder/kuttl
-RUBY_VERSION = "3.4"
+RUBY_VERSION = "4.0"
 
 DEPS = "unzip curl openssl ca-certificates git libc6 bash jq gettext"
 

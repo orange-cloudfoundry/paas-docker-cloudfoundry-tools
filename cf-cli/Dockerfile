@@ -1,4 +1,4 @@
-FROM ruby:3.4-alpine3.22
+FROM ruby:4.0-alpine3.22@sha256:fae3127404cb61d6897d7eed08e65ec7ccc96ba0542dc7c44712efa9b2ef78f0
 
 ENV PACKAGES="unzip curl openssl ca-certificates git libc6-compat bash jq gettext make"
 # renovate: datasource=github-releases depName=cloudfoundry/cli
