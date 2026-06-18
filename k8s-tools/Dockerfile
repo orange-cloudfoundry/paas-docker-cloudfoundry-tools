@@ -40,7 +40,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${KUSTOMIZE_FILENAME})" \
     && echo "${KUSTOMIZE_SUM}  ${KUSTOMIZE_FILENAME}" | sha256sum -c - \
     && tar zxvf ${KUSTOMIZE_FILENAME}
 
-# renovate: datasource=github-releases depName=k14s/kapp
+# renovate: datasource=github-releases DISABLE-RENOVATE depName=k14s/kapp
 #ENV KAPP_VERSION=0.64.0
 #ENV KAPP_SUM=33702a40b6032ada742d73c59afeb393d0830a1913e3a599ca995eba3e68a57e
 #ENV KAPP_FILENAME=kapp-linux-amd64
@@ -50,8 +50,8 @@ RUN echo "Computed sha256sum: $(sha256sum ${KUSTOMIZE_FILENAME})" \
 #    && mv kapp-linux-amd64 kapp
 
 # renovate: datasource=github-tags depName=kubernetes/kubectl
-ENV KUBECTL_VERSION=1.34.8
-ENV KUBECTL_SUM=f6249132865c13abe3c9dd5038f5da65849cb86eee1608c001831504e481aa8c
+ENV KUBECTL_VERSION=1.34.9
+ENV KUBECTL_SUM=73bb6f5063caadae1e73a39de018d8ad21755984bea35358484db817859e7634
 ENV KUBECTL_FILENAME=kubectl
 ADD https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl .
 #ADD https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl .
