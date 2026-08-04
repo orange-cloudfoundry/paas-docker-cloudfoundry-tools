@@ -17,7 +17,7 @@ RUN apt-get update \
 
 RUN rm -rf ~/.bosh/cache  # Cleanup AWS CPI
 
-RUN curl -sSL "https://cli.run.pivotal.io/stable?release=linux64-binary&version=${CF_CLI_VERSION}" | tar -zx -C /usr/local/bin
+RUN curl -sSL "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=${CF_CLI_VERSION}" | tar -zx -C /usr/local/bin
 
 RUN curl -sSLo /usr/local/bin/spruce https://github.com/geofffranks/spruce/releases/download/v${SPRUCE_VERSION}/spruce-linux-amd64 \
   && chmod +x /usr/local/bin/spruce

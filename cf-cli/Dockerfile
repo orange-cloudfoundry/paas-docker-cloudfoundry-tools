@@ -8,7 +8,7 @@ ENV SPRUCE_VERSION="1.35.7"
 
 RUN apk add --no-cache $PACKAGES
 
-RUN curl -L "https://cli.run.pivotal.io/stable?release=linux64-binary&version=${CF_CLI_VERSION}" | tar -zx -C /usr/local/bin
+RUN curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=${CF_CLI_VERSION}" | tar -zx -C /usr/local/bin
 
 RUN curl -Lo /usr/local/bin/spruce https://github.com/geofffranks/spruce/releases/download/v${SPRUCE_VERSION}/spruce-linux-amd64 \
   && chmod +x /usr/local/bin/spruce
