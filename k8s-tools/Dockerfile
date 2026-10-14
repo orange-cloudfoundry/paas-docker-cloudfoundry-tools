@@ -14,7 +14,7 @@ WORKDIR /usr/local/bin
 
 # renovate: datasource=github-releases depName=k14s/ytt
 ENV YTT_VERSION="0.55.3"
-ENV YTT_SUM=3a2c925ed222f8db4956946d40279688edd6ceb3e919f03f919a8fc8b8532eda
+ENV YTT_SUM=15751b45a819edbf22b3d3eadb5fa9a5a2599128d921660a874bd39c47bb41e1
 ENV YTT_FILENAME=ytt-linux-amd64
 ADD https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/${YTT_FILENAME} .
 RUN echo "Computed sha256sum: $(sha256sum ${YTT_FILENAME})" \
@@ -81,7 +81,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${HELM_FILENAME})" \
 
 # renovate: datasource=github-releases depName=mikefarah/yq
 ENV YQ_VERSION=4.54.1
-ENV YQ_SUM=fa52a4e758c63d38299163fbdd1edfb4c4963247918bf9c1c5d31d84789eded4
+ENV YQ_SUM=8e34fc298390875de416e6a4afcb8cabeceb25d9aa8506c1a2f9353cf702ea5f
 ENV YQ_FILENAME=yq_linux_amd64
 ADD https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} .
 RUN echo "Computed ${YQ_FILENAME} sha256sum: $(sha256sum ${YQ_FILENAME})" \
