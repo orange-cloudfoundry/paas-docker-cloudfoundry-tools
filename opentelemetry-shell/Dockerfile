@@ -15,8 +15,8 @@ RUN apt update \
 WORKDIR /tmp
 
 # renovate: datasource=github-releases depName=plengauer/Thoth
-ENV OT_SHELL_VERSION="5.56.0"
-ENV OT_SHELL_SUM=302ed73acf46fcacdc0e51ea75514f30177b386f858d2ff661b372432466497a
+ENV OT_SHELL_VERSION="5.63.1"
+ENV OT_SHELL_SUM=89c0697452e60f56562852c921165187979b0c80fb8a198349d1d50347ccdfc6
 ENV OT_SHELL_FILENAME="opentelemetry-shell_${OT_SHELL_VERSION}_amd64.deb"
 RUN echo "Download url for : https://github.com/plengauer/Thoth/releases/download/v${OT_SHELL_VERSION}/${OT_SHELL_FILENAME}"
 ADD --checksum=sha256:${OT_SHELL_SUM} https://github.com/plengauer/Thoth/releases/download/v${OT_SHELL_VERSION}/${OT_SHELL_FILENAME} .
