@@ -1,4 +1,4 @@
-FROM ruby:3.4-slim
+FROM ruby:4.0-slim@sha256:e41d40671d359ccc3431371e0af7c6430bd1b3886b47ac0667443525b7dcec1a
 
 # we use libc6 instead of libc6-compat as we do not use alpine base image
 ENV PACKAGES="unzip curl openssl ca-certificates git libc6 bash jq gettext"
