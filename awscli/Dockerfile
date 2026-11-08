@@ -1,4 +1,4 @@
-FROM alpine:3.19
+FROM alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
 # Alpine 3.19 is the last version with python 3.11
 
 ENV AWSCLI_VERSION=1.27.79
