@@ -80,7 +80,7 @@ RUN echo "Computed sha256sum: $(sha256sum ${HELM_FILENAME})" \
 #    && ln -s kubectl-kuttl kuttl
 
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION=4.54.1
+ENV YQ_VERSION=4.54.3
 ENV YQ_SUM=8e34fc298390875de416e6a4afcb8cabeceb25d9aa8506c1a2f9353cf702ea5f
 ENV YQ_FILENAME=yq_linux_amd64
 ADD https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_FILENAME} .
