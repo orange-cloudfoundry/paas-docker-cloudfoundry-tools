@@ -1,4 +1,4 @@
-FROM ruby:3.4-slim-bookworm
+FROM ruby:4.0-slim-bookworm@sha256:2ae2957252f1d59985f012f876f4f70d8fc643537766499ba5efa2c991319823
 
 # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
 ENV BOSH_CLI_VERSION=7.11.2
