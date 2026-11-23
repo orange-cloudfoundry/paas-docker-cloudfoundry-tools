@@ -1,7 +1,7 @@
 FROM ruby:3.4-slim-bookworm
 
 # renovate: datasource=github-releases depName=cloudfoundry/bosh-cli
-ENV BOSH_CLI_VERSION=7.11.2
+ENV BOSH_CLI_VERSION=7.11.3
 ENV BOSH_CLI_SUM=839a92403901639e0e1f3130e4138c912bfd217bd1579277048fcd6bf5dee28c
 ENV BOSH_CLI_FILENAME=bosh-cli-${BOSH_CLI_VERSION}-linux-amd64
 
